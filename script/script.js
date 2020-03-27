@@ -72,7 +72,7 @@ var boundaryCheck=function(){
 var winCase=function(){
     console.log("You have won!")
     gameStart=false;
-    var fixAreaArray=
+    fixAreaArray=
 [
     ["bed","x","t","x","x","m"],
     ["x","x","x","l","x","x"],
@@ -81,24 +81,128 @@ var winCase=function(){
     ["x","x","t","x","x","t"],
     ["t","x","x","x","x","baby"]
 ];
+player=
+{
+    name:"",
+    xCoordinate:0,
+    yCoordinate:0,
+    stamina: 100,
+    milk:false,
+    peg:false
+};
+var winImage=document.getElementById("gamescreen");
+winImage.style.backgroundImage="url('background/happySleepingMan.jpg')";
+var winMessage=document.getElementById("Message");
+winMessage.innerText="Good job. You have won. But tomorrow the cycle repeats again. You will return back to main screen in 10 seconds";
+//to add win
 }
 
 
 //lose state
 var eatenAlive=function(){
     console.log("You have been eaten alive. Zombie babies!");
+    fixAreaArray=
+[
+    ["bed","x","t","x","x","m"],
+    ["x","x","x","l","x","x"],
+    ["x","x","l","x","x","x"],
+    ["x","p","x","x","x","x"],
+    ["x","x","t","x","x","t"],
+    ["t","x","x","x","x","baby"]
+];
+player=
+{
+    name:"",
+    xCoordinate:0,
+    yCoordinate:0,
+    stamina: 100,
+    milk:false,
+    peg:false
+};
+var loseImage1=document.getElementById("gamescreen");
+loseImage1.style.backgroundImage="url('background/zombieBaby.jpeg')";
+var loseMessage1=document.getElementById("Message");
+loseMessage1.innerText="You have been too brave to feed the baby with your life. You lost.... Well, fortunately it is just a nightmare(or is it). You will return back to main screen in 10 seconds";
+
 }
 
 var nuclearBomb=function(){
     console.log("A nuclear bomb has exploded in front of you");
+    fixAreaArray=
+[
+    ["bed","x","t","x","x","m"],
+    ["x","x","x","l","x","x"],
+    ["x","x","l","x","x","x"],
+    ["x","p","x","x","x","x"],
+    ["x","x","t","x","x","t"],
+    ["t","x","x","x","x","baby"]
+];
+player=
+{
+    name:"",
+    xCoordinate:0,
+    yCoordinate:0,
+    stamina: 100,
+    milk:false,
+    peg:false
+};
+var loseImage2=document.getElementById("gamescreen");
+loseImage2.style.backgroundImage="url('background/nuclear.jpg')";
+var loseMessage2=document.getElementById("Message");
+loseMessage2.innerText="The smell of the poop blew your mind. Well fortunately, your wife was there to save you. You will return to the main screen in 10 seconds";
+
 }
 
 var womanFury=function(){
     console.log("Hell hath no fury like a woman scorned");
+        fixAreaArray=
+[
+    ["bed","x","t","x","x","m"],
+    ["x","x","x","l","x","x"],
+    ["x","x","l","x","x","x"],
+    ["x","p","x","x","x","x"],
+    ["x","x","t","x","x","t"],
+    ["t","x","x","x","x","baby"]
+];
+player=
+{
+    name:"",
+    xCoordinate:0,
+    yCoordinate:0,
+    stamina: 100,
+    milk:false,
+    peg:false
+};
+var loseImage3=document.getElementById("gamescreen");
+loseImage3.style.backgroundImage="url('background/AngryWife.png')";
+var loseMessage3=document.getElementById("Message");
+loseMessage3.innerText="Hell hath no fury like a woman scorned. Serve you right for letting your wife work alone to face the demon spawn. You will return to the main screen in 10 seconds";
 }
 
 var noStamina=function(){
     console.log("You have fainted in your home. Goodness know how but ya");
+            fixAreaArray=
+[
+    ["bed","x","t","x","x","m"],
+    ["x","x","x","l","x","x"],
+    ["x","x","l","x","x","x"],
+    ["x","p","x","x","x","x"],
+    ["x","x","t","x","x","t"],
+    ["t","x","x","x","x","baby"]
+];
+player=
+{
+    name:"",
+    xCoordinate:0,
+    yCoordinate:0,
+    stamina: 100,
+    milk:false,
+    peg:false
+};
+var loseImage4=document.getElementById("gamescreen");
+loseImage4.style.backgroundImage="url('background/noStamina.jpg')";
+var loseMessage4=document.getElementById("Message");
+loseMessage4.innerText="You have fainted in your home. Goodness know how but ya. You will return to the main screen in 10 seconds";
 }
 
 // functions if bump wall, step on lego, bump Table
