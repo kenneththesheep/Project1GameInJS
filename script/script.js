@@ -95,11 +95,22 @@ var noStamina=function(){
 
 var wallBump=function(){
     console.log("Bump Wall");
+    var wallImage=document.getElementById("gamescreen");
+    wallImage.style.backgroundImage="url('background/wall.jpeg')";
+    var Message=document.getElementById("Message");
+    Message.innerText="You have bumped into the wall. Thought this was your house?";
 }
 
 var legoStep=function(){
     console.log("lego ouch!");
+
     player.stamina-=5;
+    var legoImage=document.getElementById("gamescreen");
+    legoImage.style.backgroundImage="url('background/lego.jpeg')";
+    var Message=document.getElementById("Message");
+    Message.innerText="Ouch, why is the lego here? To clear in the morning";
+    var staminaBar=document.getElementById("staminaCount");
+    staminaBar.innerText=`Stamina: ${player.stamina}`;
     if(player.stamina<=0)
     {
         noStamina();
@@ -109,6 +120,12 @@ var legoStep=function(){
 var tableBump=function(){
     console.log("table ouch");
     player.stamina-=10;
+      var tableImage=document.getElementById("gamescreen");
+    tableImage.style.backgroundImage="url('background/table.jpeg')";
+    var Message=document.getElementById("Message");
+    Message.innerText="Wa Lao! Who left the stupid table here!";
+    var staminaBar=document.getElementById("staminaCount");
+    staminaBar.innerText=`Stamina: ${player.stamina}`;
     if(player.stamina<=0)
     {
                 noStamina();
@@ -117,14 +134,36 @@ var tableBump=function(){
 
 var darkRoom=function(){
     console.log("dark room");
+    var darkImage=document.getElementById("gamescreen");
+    darkImage.style.backgroundImage="url('background/darkCorridor.jpeg')";
+    var Message=document.getElementById("Message");
+    Message.innerText="Isn't the dark so romantic?";
 }
 
 var seeBed=function(){
     console.log("I see bed");
+    var bedImage=document.getElementById("gamescreen");
+    bedImage.style.backgroundImage="url('background/bed.jpg')";
+    var Message=document.getElementById("Message");
+    Message.innerText="My beautiful bed. Wish I could just sleep.";
 }
 
 var seeBaby=function(){
     console.log("I see baby");
+    if(baby.sleep)
+    {
+    var babySleepImage=document.getElementById("gamescreen");
+    babySleepImage.style.backgroundImage="url('background/sleepingBaby.jpeg')";
+    var Message=document.getElementById("Message");
+    Message.innerText="Aren't they angels when they sleep";
+    }
+    else
+    {
+    var babyCryImage=document.getElementById("gamescreen");
+    babyCryImage.style.backgroundImage="url('background/cryingBaby.jpg')";
+    var Message=document.getElementById("Message");
+    Message.innerText="Better get him to sleep before he drives me insane!";
+    }
 }
 
 //This function is to check for key press and only activated when game start
@@ -332,104 +371,104 @@ var checkKey=function(event){
             //end of pick up logic
 
             //start of feed logic
-            else if (event.keyCode===70)
+        else if (event.keyCode===70)
+        {
+        // F key to feed
+        //Logic to feed the kiddo
+        if(playAreaArray[player.yCoordinate][player.xCoordinate]==="baby")
             {
-            // F key to feed
-            //Logic to feed the kiddo
-            if(playAreaArray[player.yCoordinate][player.xCoordinate]==="baby")
-                {
-                    //console.log("check milk")
-                    if(baby.fed)
-                        {
-                            console.log("Dude you fed the kid. Come on. Wake up");
-                        }
-                    else{
-                            if(player.milk)
-                                {
-                                    console.log("you have fed the kid. Good job");
-                                    baby.fed=true;
-                                    player.milk=false;
-                                        if(baby.fed&&baby.diaper)
-                                        {
-                                            baby.sleep=true;
-                                            console.log("sleeping like a baby")
-                                        }
-                                }
-                            else
-                                {
-                                    eatenAlive();
-                                }
-                        }
-                }
-            else
-            {
-                console.log("Who are you feeding? Ghost?");
-            }
-
-            }
-            //end of feed logic
-
-            //start of diaper logic
-            else if (event.keyCode===67)
-            {
-            //C key to Change diapers
-            //Logic to change the diapers
-            if(playAreaArray[player.yCoordinate][player.xCoordinate]==="baby")
-                {
-                    //console.log("check milk")
-                    if(baby.diaper)
-                        {
-                            console.log("Dude you sure like to smell his poop huh");
-                        }
-                    else{
-                            if(player.peg)
-                                {
-                                    console.log("you have change the kid's diapers. Good job");
-                                    baby.diaper=true;
-                                    player.peg=false;
-                                    if(baby.fed&&baby.diaper)
-                                        {
-                                            baby.sleep=true;
-                                            console.log("sleeping like a baby")
-                                        }
-                                }
-                            else
-                                {
-                                    nuclearBomb();
-                                }
-                        }
-                }
-            else
-            {
-                console.log("Wow, you really know how to play with floating diapers");
-            }
-
-            }
-            //end of diaper logic
-
-
-
-            else if(event.keyCode===83)
-            {
-            //S Key to sleep
-                if(playAreaArray[player.yCoordinate][player.xCoordinate]==="bed")
-                {
-                    console.log("sleep bed");
-                    if(baby.sleep)
+                //console.log("check milk")
+                if(baby.fed)
                     {
-                        winCase();
-                        //console.log("peaceful day");
+                     console.log("Dude you fed the kid. Come on. Wake up");
                     }
-                    else
+                else{
+                if(player.milk)
+                        {
+                 console.log("you have fed the kid. Good job");
+                 baby.fed=true;
+            player.milk=false;
+             if(baby.fed&&baby.diaper)
+                          {
+             baby.sleep=true;
+               console.log("sleeping like a baby")
+                                    }
+                            }
+                        else
+                            {
+                     eatenAlive();
+                            }
+                    }
+            }
+        else
+        {
+            console.log("Who are you feeding? Ghost?");
+        }
+
+        }
+        //end of feed logic
+
+        //start of diaper logic
+        else if (event.keyCode===67)
+        {
+        //C key to Change diapers
+        //Logic to change the diapers
+        if(playAreaArray[player.yCoordinate][player.xCoordinate]==="baby")
+            {
+                //console.log("check milk")
+                if(baby.diaper)
                     {
-                        womanFury();
+                        console.log("Dude you sure like to smell his poop huh");
                     }
+                else{
+                        if(player.peg)
+                            {
+                                console.log("you have change the kid's diapers. Good job");
+                                baby.diaper=true;
+                                player.peg=false;
+                                if(baby.fed&&baby.diaper)
+                                    {
+                                        baby.sleep=true;
+                                        console.log("sleeping like a baby")
+                                    }
+                            }
+                        else
+                            {
+                                nuclearBomb();
+                            }
+                    }
+            }
+        else
+        {
+            console.log("Wow, you really know how to play with floating diapers");
+        }
+
+        }
+        //end of diaper logic
+
+
+
+        else if(event.keyCode===83)
+        {
+        //S Key to sleep
+            if(playAreaArray[player.yCoordinate][player.xCoordinate]==="bed")
+            {
+                console.log("sleep bed");
+                if(baby.sleep)
+                {
+                    winCase();
+                    //console.log("peaceful day");
                 }
                 else
                 {
-                    console.log("now it is not time for camp la");
+                    womanFury();
                 }
-            }}
+            }
+            else
+            {
+                console.log("now it is not time for camp la");
+            }
+        }}
     }
 
 // Game interaction functions end here
@@ -463,6 +502,51 @@ else{
 var gameScreen=function(event){
     console.log("test");
     gameStart=true;
+    document.body.innerHTML="";
+    var gameContainer=document.createElement("div");
+    gameContainer.classList.add("gamecontainer");
+    document.body.appendChild(gameContainer);
+
+    var gameTitle=document.createElement("h2");
+    gameTitle.innerText="Baby Dungeon";
+    gameContainer.appendChild(gameTitle);
+
+    var gameScreen=document.createElement("div");
+    gameScreen.classList.add("gamescreen");
+    gameScreen.setAttribute("id","gamescreen");
+    gameContainer.appendChild(gameScreen);
+
+    var gameMessageDiv=document.createElement("div");
+    gameMessageDiv.classList.add("GameMessageDiv");
+    gameContainer.appendChild(gameMessageDiv);
+
+    var gameMessage=document.createElement("h3");
+    gameMessage.setAttribute("id", "Message");
+    gameMessage.innerText="Let's stop the baby from crying. Wonder who turned out the lights";
+    gameMessageDiv.appendChild(gameMessage);
+
+    var panel=document.createElement("div");
+    panel.classList.add("panel");
+    gameContainer.appendChild(panel);
+
+    var milkContainer=document.createElement("div");
+    milkContainer.classList.add("milkContainer");
+    panel.appendChild(milkContainer);
+
+
+    var pegContainer=document.createElement("div");
+    pegContainer.classList.add("pegContainer");
+    panel.appendChild(pegContainer);
+
+    var stamina=document.createElement("div");
+    stamina.classList.add("stamina");
+    panel.appendChild(stamina);
+
+    var staminaText=document.createElement("p");
+    staminaText.setAttribute("id","staminaCount");
+    staminaText.innerText="Stamina: 100";
+    stamina.appendChild(staminaText);
+
 }
 
 
@@ -543,7 +627,7 @@ var initialScreen=function(){
 
 //Window load new html
 //Remember to load after creating the game screen
-/*
+
 window.onload=function()
 {
     console.log("load up");
@@ -551,4 +635,3 @@ window.onload=function()
 
 
 }
-*/
