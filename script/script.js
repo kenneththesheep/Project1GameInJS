@@ -71,6 +71,16 @@ var boundaryCheck=function(){
 //win state
 var winCase=function(){
     console.log("You have won!")
+    gameStart=false;
+    var fixAreaArray=
+[
+    ["bed","x","t","x","x","m"],
+    ["x","x","x","l","x","x"],
+    ["x","x","l","x","x","x"],
+    ["x","p","x","x","x","x"],
+    ["x","x","t","x","x","t"],
+    ["t","x","x","x","x","baby"]
+];
 }
 
 
@@ -342,28 +352,46 @@ var checkKey=function(event){
                 {
                     case "m":
                     console.log("You have found some milk!");
+                    var milkImage=document.querySelector(".milkContainer");
+                    milkImage.style.backgroundImage="url('figure/milkBottle.png')";
+                    var milkMessage=document.getElementById("Message");
+                    milkMessage.innerText="Found the milk, lucky you.";
                     player.milk=true;
                     playAreaArray[player.yCoordinate][player.xCoordinate]="x";
                     break;
                     case "p":
                     console.log("You have found a peg");
+                    var pegImage=document.querySelector(".pegContainer");
+                    pegImage.style.backgroundImage="url('figure/peg.png')";
+                    var pegMessage=document.getElementById("Message");
+                    pegMessage.innerText="Found the peg, lucky you.";
                     player.peg=true;
                     playAreaArray[player.yCoordinate][player.xCoordinate]="x";
                     break
                     case "x":
                     console.log("You groped in the dark and found nothing");
+                    var darkMessage=document.getElementById("Message");
+                    darkMessage.innerText="I know you love dancing in the dark, but come on";
                     break;
                     case "bed":
                     console.log("You can feel your comfy bed in the dark");
+                    var bedMessage=document.getElementById("Message");
+                    bedMessage.innerText="The bed summons you but you know you need to do something before a disaster happens";
                     break;
                     case "baby":
                     console.log("The little terror");
+                    var babyMessage=document.getElementById("Message");
+                    babyMessage.innerText="The little rascal";
                     break;
                     case "l":
                     console.log("You feel the lego. Must remember to clear...");
+                    var legoMessage=document.getElementById("Message");
+                    legoMessage.innerText="I did not know you have fetish in stepping on lego... ";
                     break;
                     case "t":
                     console.log("the table feels like some monster in the dark...");
+                    var tableMessage=document.getElementById("Message");
+                    tableMessage.innerText="The table feels like it moved...";
                     break;
                 }
 
@@ -381,17 +409,32 @@ var checkKey=function(event){
                 if(baby.fed)
                     {
                      console.log("Dude you fed the kid. Come on. Wake up");
+                    var fedMessage=document.getElementById("Message");
+                    fedMessage.innerText="Dude you fed the kid. Come on. Wake up!";
                     }
                 else{
                 if(player.milk)
                         {
                  console.log("you have fed the kid. Good job");
+
                  baby.fed=true;
             player.milk=false;
+                var milkBottleUsed=document.querySelector(".milkContainer");
+                milkBottleUsed.style.backgroundImage="url('')";
+
              if(baby.fed&&baby.diaper)
                           {
              baby.sleep=true;
                console.log("sleeping like a baby")
+               var fedMessage2=document.getElementById("Message");
+                    fedMessage2.innerText="Sleeping like a baby! Time for me to return";
+                    var sleepingBaby=document.getElementById("gamescreen");
+                    sleepingBaby.style.backgroundImage="url('/background/sleepingBaby.jpeg')";
+                                    }
+                    else{
+                        var fedMessage3=document.getElementById("Message");
+                    fedMessage3.innerText="There is something missing in my life";
+
                                     }
                             }
                         else
@@ -403,6 +446,8 @@ var checkKey=function(event){
         else
         {
             console.log("Who are you feeding? Ghost?");
+                    var fedMessage4=document.getElementById("Message");
+                    fedMessage4.innerText="Dude, who are you feeding? Ghost?";
         }
 
         }
@@ -419,17 +464,30 @@ var checkKey=function(event){
                 if(baby.diaper)
                     {
                         console.log("Dude you sure like to smell his poop huh");
+                    var diaperMessage=document.getElementById("Message");
+                    diaperMessage.innerText="Dude you sure like to smell his poop huh.";
                     }
                 else{
                         if(player.peg)
                             {
                                 console.log("you have change the kid's diapers. Good job");
+                    var pegUsed=document.querySelector(".pegContainer");
+                pegUsed.style.backgroundImage="url('')";
+
                                 baby.diaper=true;
                                 player.peg=false;
                                 if(baby.fed&&baby.diaper)
                                     {
                                         baby.sleep=true;
-                                        console.log("sleeping like a baby")
+                                        console.log("sleeping like a baby");
+                            var diaperMessage2=document.getElementById("Message");
+                    diaperMessage2.innerText="Sleeping like a baby! Time for me to return";
+                    var sleepingBaby=document.getElementById("gamescreen");
+                    sleepingBaby.style.backgroundImage="url('background/sleepingBaby.jpeg')";
+                                    }
+                                    else{
+                                        var diaperMessage3=document.getElementById("Message");
+                    diaperMessage3.innerText="He is still crying. What did I miss?";
                                     }
                             }
                         else
@@ -441,6 +499,8 @@ var checkKey=function(event){
         else
         {
             console.log("Wow, you really know how to play with floating diapers");
+            var diaperMessage4=document.getElementById("Message");
+                    diaperMessage4.innerText="Wow, you really know how to play with floating diapers";
         }
 
         }
@@ -467,6 +527,8 @@ var checkKey=function(event){
             else
             {
                 console.log("now it is not time for camp la");
+                    var sleepMessage=document.getElementById("Message");
+                    sleepMessage.innerText="You can sleep anywhere I see, but now it is not the time";
             }
         }}
     }
