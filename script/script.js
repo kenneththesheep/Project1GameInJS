@@ -19,27 +19,80 @@ var testAreaArray=
 ];
 
 
+//Boundary check to ensure not bumped into the wall
+var boundaryCheck=function(){
+    if((player.yCoordinate<0) || (player.yCoordinate>=testAreaArray.length) ||player.xCoordinate<0||(player.xCoordinate>=testAreaArray[player.yCoordinate].length))
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+
 //This function is to check for key press
-checkKey=function(event){
+var checkKey=function(event){
     //console.log(event);
 
     if(event.keyCode===38)
         {
         // up key pressed
+            player.yCoordinate--;
+            if(boundaryCheck()){
+                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:"+ player.xCoordinate);
+                console.log(testAreaArray[player.yCoordinate][player.xCoordinate]);
+            }
+            else
+            {
+                player.yCoordinate++;
+                console.log("bumped");
+            }
 
         }
         else if(event.keyCode===40)
         {
             //down key pressed
+            player.yCoordinate++;
+            if(boundaryCheck()){
+                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:"+ player.xCoordinate);
+                console.log(testAreaArray[player.yCoordinate][player.xCoordinate]);
+            }
+            else
+            {
+                player.yCoordinate--;
+                console.log("bumped");
+            }
 
         }
         else if (event.keyCode===39){
         //right key pressed
+            player.xCoordinate++;
+            if(boundaryCheck()){
+                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:"+ player.xCoordinate);
+                console.log(testAreaArray[player.yCoordinate][player.xCoordinate]);
+            }
+            else
+            {
+                player.xCoordinate--;
+                console.log("bumped");
+            }
 
         }
         else if (event.keyCode===37)
         {
         //left key pressed
+                    player.xCoordinate--;
+            if(boundaryCheck()){
+                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:" +player.xCoordinate);
+                console.log(testAreaArray[player.yCoordinate][player.xCoordinate]);
+            }
+            else
+            {
+                player.xCoordinate++;
+                console.log("bumped");
+            }
 
         }
         else if (event.keyCode===32)
