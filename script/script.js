@@ -5,9 +5,18 @@ var player=
     name:"",
     xCoordinate:0,
     yCoordinate:0,
-    stamina: 100
+    stamina: 100,
+    milk:false,
+    peg:false
 };
 
+//baby object
+var baby=
+{
+    fed:false,
+    diaper:false,
+    sleep:false
+}
 
 //play area
 //for testing purpose
