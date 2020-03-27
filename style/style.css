@@ -1,33 +1,72 @@
 .StartScreenText{
 	color:green;
 	text-align: center;
-	  margin: 0 auto;
+	  margin: 72px auto 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: 'Permanent Marker', cursive;
+  font-size:80px;
+
+}
+.show{
+
+}
+.header{
+	width:100%;
+	margin:15px auto;
+	margin-left: 77px;
+}
+#clickInstruction{
+	margin-left:77px;
+}
+#clickControl{
+	margin-left:75px;
 }
 .startBox{
 	background-color: #999999;
 	border:1px solid black;
 	height:800px;
+	background-image:url(../frame/frame.png);
+	background-repeat: no-repeat;
+  background-size: auto;
 }
+.hidden{
+	display:none;
+}
+.display{
+	display:block;
+}
+
 h2{
 	text-align:center;
 }
 .instruction{
 	text-align:center;
+	margin-left:77px;
+	display:none;
 }
 .controls{
 	text-align: center;
+	margin-left:77px;
+	display:none;
 }
 #Start{
 	align-self: center;
 	text-align: center;
 	margin:0px auto;
+	font-size:30px;
 }
 .button{
 	width:100% ;
 	justify-content:center;
 	display:flex;
+	margin-left:37px;
 
+}
+.imageBox{
+	width:100%;
+	margin-left:30px;
+	justify-content:center;
+	display:flex;
 }
