@@ -63,6 +63,12 @@ var boundaryCheck=function(){
     }
 }
 
+//win state
+var winCase=function(){
+    console.log("You have won!")
+}
+
+
 //lose state
 var eatenAlive=function(){
     console.log("You have been eaten alive. Zombie babies!");
@@ -71,37 +77,136 @@ var eatenAlive=function(){
 var nuclearBomb=function(){
     console.log("A nuclear bomb has exploded in front of you");
 }
+
+var womanFury=function(){
+    console.log("Hell hath no fury like a woman scorned");
+}
+
+var noStamina=function(){
+    console.log("You have fainted in your home. Goodness know how but ya");
+}
+
+// functions if bump wall, step on lego, bump Table
+
+var wallBump=function(){
+    console.log("Bump Wall");
+}
+
+var legoStep=function(){
+    console.log("lego ouch!");
+    player.stamina-=5;
+    if(player.stamina<=0)
+    {
+        noStamina();
+    }
+}
+
+var tableBump=function(){
+    console.log("table ouch");
+    player.stamina-=10;
+    if(player.stamina<=0)
+    {
+                noStamina();
+    }
+}
+
+var darkRoom=function(){
+    console.log("dark room");
+}
+
+var seeBed=function(){
+    console.log("I see bed");
+}
+
+var seeBaby=function(){
+    console.log("I see baby");
+}
+
 //This function is to check for key press
 var checkKey=function(event){
     //console.log(event);
 
+    //start of movement logic
     if(event.keyCode===38)
         {
         // up key pressed
             player.yCoordinate--;
-            if(boundaryCheck()){
+            if(boundaryCheck())
+            {
 //                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:"+ player.xCoordinate);
-                console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
+                switch(playAreaArray[player.yCoordinate][player.xCoordinate])
+                {
+                    case "l":
+                    legoStep();
+                    break;
+                    case "t":
+                    tableBump();
+                    break;
+                    case "x":
+                    darkRoom();
+                    break;
+                    case "m":
+                    darkRoom();
+                    break;
+                    case "p":
+                    darkRoom();
+                    break;
+                    case "bed":
+                    seeBed();
+                    break;
+                    case "baby":
+                    seeBaby();
+                    break;
+                }
+
+                //console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
             }
             else
             {
                 player.yCoordinate++;
-                console.log("bumped");
+                wallBump();
+                //console.log("bumped");
             }
 
         }
-        else if(event.keyCode===40)
+
+
+    else if(event.keyCode===40)
         {
             //down key pressed
             player.yCoordinate++;
             if(boundaryCheck()){
-//                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:"+ player.xCoordinate);
-                console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
+switch(playAreaArray[player.yCoordinate][player.xCoordinate])
+                {
+                    case "l":
+                    legoStep();
+                    break;
+                    case "t":
+                    tableBump();
+                    break;
+                    case "x":
+                    darkRoom();
+                    break;
+                    case "m":
+                    darkRoom();
+                    break;
+                    case "p":
+                    darkRoom();
+                    break;
+                    case "bed":
+                    seeBed();
+                    break;
+                    case "baby":
+                    seeBaby();
+                    break;
+                }
+
+                //console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
             }
             else
             {
                 player.yCoordinate--;
-                console.log("bumped");
+                wallBump();
             }
 
         }
@@ -109,13 +214,37 @@ var checkKey=function(event){
         //right key pressed
             player.xCoordinate++;
             if(boundaryCheck()){
-//                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:"+ player.xCoordinate);
-                console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
+switch(playAreaArray[player.yCoordinate][player.xCoordinate])
+                {
+                    case "l":
+                    legoStep();
+                    break;
+                    case "t":
+                    tableBump();
+                    break;
+                    case "x":
+                    darkRoom();
+                    break;
+                    case "m":
+                    darkRoom();
+                    break;
+                    case "p":
+                    darkRoom();
+                    break;
+                    case "bed":
+                    seeBed();
+                    break;
+                    case "baby":
+                    seeBaby();
+                    break;
+                }
+
+                //console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
             }
             else
             {
                 player.xCoordinate--;
-                console.log("bumped");
+                wallBump();
             }
 
         }
@@ -124,16 +253,43 @@ var checkKey=function(event){
         //left key pressed
                     player.xCoordinate--;
             if(boundaryCheck()){
-//                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:" +player.xCoordinate);
-                console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
+switch(playAreaArray[player.yCoordinate][player.xCoordinate])
+                {
+                    case "l":
+                    legoStep();
+                    break;
+                    case "t":
+                    tableBump();
+                    break;
+                    case "x":
+                    darkRoom();
+                    break;
+                    case "m":
+                    darkRoom();
+                    break;
+                    case "p":
+                    darkRoom();
+                    break;
+                    case "bed":
+                    seeBed();
+                    break;
+                    case "baby":
+                    seeBaby();
+                    break;
+                }
+
+                //console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
             }
             else
             {
                 player.xCoordinate++;
-                console.log("bumped");
+                wallBump();
             }
 
         }
+    //end of movement logic
+
+    //start of picking up logic
         else if (event.keyCode===32)
         {
 
@@ -168,6 +324,9 @@ var checkKey=function(event){
             }
 
         }
+        //end of pick up logic
+
+        //start of feed logic
         else if (event.keyCode===70)
         {
         // F key to feed
@@ -203,6 +362,9 @@ var checkKey=function(event){
         }
 
         }
+        //end of feed logic
+
+        //start of diaper logic
         else if (event.keyCode===67)
         {
         //C key to Change diapers
@@ -238,10 +400,30 @@ var checkKey=function(event){
         }
 
         }
+        //end of diaper logic
+
+
+
         else if(event.keyCode===83)
         {
         //S Key to sleep
-
+            if(playAreaArray[player.yCoordinate][player.xCoordinate]==="bed")
+            {
+                console.log("sleep bed");
+                if(baby.sleep)
+                {
+                    winCase();
+                    //console.log("peaceful day");
+                }
+                else
+                {
+                    womanFury();
+                }
+            }
+            else
+            {
+                console.log("now it is not time for camp la");
+            }
         }
     }
 
