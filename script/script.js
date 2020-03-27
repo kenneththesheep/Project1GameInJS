@@ -1,7 +1,8 @@
 //console.log("soft check");
 //To prevent the game to start yet
 var gameStart=false;
-
+var toggleInstructionSwitch=false;
+var toggleControlSwitch=false;
 
 //player object
 var player=
@@ -435,13 +436,36 @@ var checkKey=function(event){
 
 
 document.addEventListener("keyup",checkKey);
+//toggle messages
+var toggleInstruction=function(event){
+//console.log("toggle");
+toggleInstructionSwitch=!toggleInstructionSwitch;
+var toggleInstruction=document.querySelector(".instruction");
+if(toggleInstructionSwitch){
+toggleInstruction.style.display="block";}
+else{
+    toggleInstruction.style.display="none";
+}
+}
+
+var toggleControl=function(event){
+//console.log("toggle");
+toggleControlSwitch=!toggleControlSwitch;
+
+var toggleControl=document.querySelector(".controls");
+if(toggleControlSwitch){
+toggleControl.style.display="block";}
+else{
+    toggleControl.style.display="none";
+}
+}
 
 
-//Window load new html
-window.onload=function()
-{
-    console.log("load up");
-    document.body.innerHTML="";
+//title Screen
+var initialScreen=function(){
+
+    gameStart=false;
+        document.body.innerHTML="";
     var startBox=document.createElement("div");
     startBox.classList.add("startBox");
     document.body.appendChild(startBox);
@@ -499,6 +523,22 @@ window.onload=function()
     button.setAttribute("id","Start");
     button.innerText="Start";
     buttonDiv.appendChild(button);
+
+    var instructionToggle=document.getElementById("clickInstruction");
+    instructionToggle.addEventListener("click",toggleInstruction);
+
+    var controlToggle=document.getElementById("clickControl");
+    controlToggle.addEventListener("click",toggleControl);
+
+
+
+}
+
+//Window load new html
+window.onload=function()
+{
+    console.log("load up");
+    initialScreen();
 
 
 }
