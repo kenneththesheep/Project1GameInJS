@@ -1,3 +1,18 @@
-h1{
+.StartScreenText{
 	color:green;
+	text-align: center;
+}
+.startBox{
+	background-color: #999999;
+	border:1px solid black;
+	height:800px;
+}
+h2{
+	text-align:center;
+}
+.instruction{
+	text-align:center;
+}
+.control{
+	text-align: center;
 }
