@@ -63,7 +63,14 @@ var boundaryCheck=function(){
     }
 }
 
+//lose state
+var eatenAlive=function(){
+    console.log("You have been eaten alive. Zombie babies!");
+}
 
+var nuclearBomb=function(){
+    console.log("A nuclear bomb has exploded in front of you");
+}
 //This function is to check for key press
 var checkKey=function(event){
     //console.log(event);
@@ -135,9 +142,13 @@ var checkKey=function(event){
             {
                 case "m":
                 console.log("You have found some milk!");
+                player.milk=true;
+                playAreaArray[player.yCoordinate][player.xCoordinate]="x";
                 break;
                 case "p":
                 console.log("You have found a peg");
+                player.peg=true;
+                playAreaArray[player.yCoordinate][player.xCoordinate]="x";
                 break
                 case "x":
                 console.log("You groped in the dark and found nothing");
@@ -160,11 +171,71 @@ var checkKey=function(event){
         else if (event.keyCode===70)
         {
         // F key to feed
+        //Logic to feed the kiddo
+        if(playAreaArray[player.yCoordinate][player.xCoordinate]==="baby")
+            {
+                //console.log("check milk")
+                if(baby.fed)
+                    {
+                        console.log("Dude you fed the kid. Come on. Wake up");
+                    }
+                else{
+                        if(player.milk)
+                            {
+                                console.log("you have fed the kid. Good job");
+                                baby.fed=true;
+                                player.milk=false;
+                                    if(baby.fed&&baby.diaper)
+                                    {
+                                        baby.sleep=true;
+                                        console.log("sleeping like a baby")
+                                    }
+                            }
+                        else
+                            {
+                                eatenAlive();
+                            }
+                    }
+            }
+        else
+        {
+            console.log("Who are you feeding? Ghost?");
+        }
 
         }
         else if (event.keyCode===67)
         {
         //C key to Change diapers
+        //Logic to change the diapers
+        if(playAreaArray[player.yCoordinate][player.xCoordinate]==="baby")
+            {
+                //console.log("check milk")
+                if(baby.diaper)
+                    {
+                        console.log("Dude you sure like to smell his poop huh");
+                    }
+                else{
+                        if(player.peg)
+                            {
+                                console.log("you have change the kid's diapers. Good job");
+                                baby.diaper=true;
+                                player.peg=false;
+                                if(baby.fed&&baby.diaper)
+                                    {
+                                        baby.sleep=true;
+                                        console.log("sleeping like a baby")
+                                    }
+                            }
+                        else
+                            {
+                                nuclearBomb();
+                            }
+                    }
+            }
+        else
+        {
+            console.log("Wow, you really know how to play with floating diapers");
+        }
 
         }
         else if(event.keyCode===83)
