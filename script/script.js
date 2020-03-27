@@ -459,6 +459,11 @@ else{
     toggleControl.style.display="none";
 }
 }
+//building of the game screen
+var gameScreen=function(event){
+    console.log("test");
+    gameStart=true;
+}
 
 
 //title Screen
@@ -530,11 +535,15 @@ var initialScreen=function(){
     var controlToggle=document.getElementById("clickControl");
     controlToggle.addEventListener("click",toggleControl);
 
+    var buttonStart=document.getElementById("Start");
+    buttonStart.addEventListener("click",gameScreen);
 
 
 }
 
 //Window load new html
+//Remember to load after creating the game screen
+/*
 window.onload=function()
 {
     console.log("load up");
@@ -542,3 +551,4 @@ window.onload=function()
 
 
 }
+*/
