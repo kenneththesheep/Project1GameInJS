@@ -1,6 +1,10 @@
 .StartScreenText{
 	color:green;
 	text-align: center;
+	  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .startBox{
 	background-color: #999999;
@@ -13,6 +17,17 @@ h2{
 .instruction{
 	text-align:center;
 }
-.control{
+.controls{
 	text-align: center;
+}
+#Start{
+	align-self: center;
+	text-align: center;
+	margin:0px auto;
+}
+.button{
+	width:100% ;
+	justify-content:center;
+	display:flex;
+
 }
