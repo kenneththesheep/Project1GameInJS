@@ -735,9 +735,9 @@ var toggleInstruction=function(event){
 toggleInstructionSwitch=!toggleInstructionSwitch;
 var toggleInstruction=document.querySelector(".instruction");
 if(toggleInstructionSwitch){
-toggleInstruction.style.display="block";}
+toggleInstruction.style.visibility="visible";}
 else{
-    toggleInstruction.style.display="none";
+    toggleInstruction.style.visibility="hidden";
 }
 }
 
@@ -747,9 +747,9 @@ toggleControlSwitch=!toggleControlSwitch;
 
 var toggleControl=document.querySelector(".controls");
 if(toggleControlSwitch){
-toggleControl.style.display="block";}
+toggleControl.style.visibility="visible";}
 else{
-    toggleControl.style.display="none";
+    toggleControl.style.visibility="hidden";
 }
 }
 //building of the game screen
@@ -757,6 +757,7 @@ var gameScreen=function(event){
     console.log("test");
     gameStart=true;
     document.body.innerHTML="";
+    document.body.style.backgroundColor="#E6E6E6";
     var gameContainer=document.createElement("div");
     gameContainer.classList.add("gamecontainer");
     document.body.appendChild(gameContainer);
@@ -815,6 +816,8 @@ var initialScreen=function(){
 
     gameStart=false;
         document.body.innerHTML="";
+    document.body.style.backgroundColor="#E6E6E6";
+
     var startBox=document.createElement("div");
     startBox.classList.add("startBox");
     document.body.appendChild(startBox);
@@ -822,56 +825,79 @@ var initialScreen=function(){
     var header= document.createElement("div");
     header.classList.add("header");
     startBox.appendChild(header);
-    var title=document.createElement("h1");
-    title.classList.add("StartScreenText");
+
+
+    var title=document.createElement("span");
+    title.classList.add("headerText");
     title.innerText="Baby Dungeon";
     header.appendChild(title);
 
-    var imageBox=document.createElement("div");
-    imageBox.classList.add("imageBox");
-    startBox.appendChild(imageBox);
+    var startButtonDiv=document.createElement("div");
+    startButtonDiv.classList.add("button");
+    startBox.appendChild(startButtonDiv);
 
-    var imageToAdd=document.createElement("img");
-    imageToAdd.setAttribute("src","figure/sleepMan.jpg")
-    imageToAdd.setAttribute("height", "200px");
-    imageToAdd.setAttribute("width","200px");
+    var startButton=document.createElement("button");
+    startButton.setAttribute("id","Start");
+    startButton.innerText="Start";
+    startButtonDiv.appendChild(startButton);
 
-    imageBox.appendChild(imageToAdd);
+    var firstClassContainer=document.createElement("div");
+    firstClassContainer.classList.add("container");
+    startBox.appendChild(firstClassContainer);
 
-    var instructionSubHeading= document.createElement("h2");
-    instructionSubHeading.setAttribute("id","clickInstruction");
-    instructionSubHeading.innerText="Instruction(Click to show)";
-    startBox.appendChild(instructionSubHeading);
+    var firstClassRow=document.createElement("div");
+    firstClassRow.classList.add("row");
+    firstClassContainer.appendChild(firstClassRow);
 
-    var instructionDiv=document.createElement("div");
-    instructionDiv.classList.add("instruction");
-    startBox.appendChild(instructionDiv);
+    var firstClassLeftDiv=document.createElement("div");
+    firstClassLeftDiv.classList.add("col-md-5");
+    firstClassRow.appendChild(firstClassLeftDiv);
 
-    var instructionPara=document.createElement("p");
-    instructionPara.innerHTML="You are a daddy who is woken up in the middle of the night. <br> You hear your kid crying.<br> You need to move in a dark room and find his milk bottle and a peg (you know how stinky a diapers can get). <br> Once done, look for him, feed him, change his diaper and go back to bed.<br>";
-    instructionDiv.appendChild(instructionPara);
+    var firstClassMiddleDiv=document.createElement("div");
+    firstClassMiddleDiv.classList.add("col-md-2");
+     firstClassMiddleDiv.classList.add("instruction");
+    firstClassMiddleDiv.innerHTML="You are a daddy who is woken up in the middle of the night. <br> You hear your kid crying.<br> You need to move in a dark room and find his milk bottle and a peg (you know how stinky a diapers can get). <br> Once done, look for him, feed him, change his diaper and go back to bed.<br><br><br><br><br><br>";
+    firstClassRow.appendChild(firstClassMiddleDiv);
 
-    var controlHeading=document.createElement("h2");
-    controlHeading.setAttribute("id","clickControl");
-    controlHeading.innerText="Controls(Click to show)";
-    startBox.appendChild(controlHeading);
 
-    var controlDiv=document.createElement("div");
-    controlDiv.classList.add("controls");
-    startBox.appendChild(controlDiv);
 
-    var controlPara=document.createElement('p');
-    controlPara.innerHTML="Arrow keys to move. <br>Space to search.<br> F to feed <br> C to change diapers.<br> S to go back to sleep. <br> m to toggle map mode";
-    controlDiv.appendChild(controlPara);
+    var firstClassRightDiv=document.createElement("div");
+    firstClassRightDiv.classList.add("col-md-2");
+      firstClassRightDiv.classList.add("controls");
+    firstClassRightDiv.innerHTML="Arrow keys to move. <br>Space to search.<br> F to feed <br> C to change diapers.<br> S to go back to sleep<br>M to toggle map mode";
+    firstClassRow.appendChild(firstClassRightDiv);
 
-    var buttonDiv=document.createElement('div');
-    buttonDiv.classList.add("button");
-    startBox.appendChild(buttonDiv);
+    var secondClassContainer=document.createElement("div");
+    secondClassContainer.classList.add("container");
+    startBox.appendChild(secondClassContainer);
 
-    var button=document.createElement("button");
-    button.setAttribute("id","Start");
-    button.innerText="Start";
-    buttonDiv.appendChild(button);
+    var secondClassRow=document.createElement("div");
+    secondClassRow.classList.add("row");
+    secondClassContainer.appendChild(secondClassRow);
+
+    var secondClassLeftDiv=document.createElement("div");
+    secondClassLeftDiv.classList.add("col-md-5");
+    secondClassRow.appendChild(secondClassLeftDiv);
+
+    var secondClassMiddleDiv=
+    document.createElement("div");
+    secondClassMiddleDiv.classList.add("col-md-2");
+    secondClassRow.appendChild(secondClassMiddleDiv);
+
+    var instructionButton=document.createElement("button");
+    instructionButton.setAttribute("id","clickInstruction");
+    instructionButton.innerText="Instruction";
+    secondClassMiddleDiv.appendChild(instructionButton);
+
+    var secondClassRightDiv=
+    document.createElement("div");
+    secondClassRightDiv.classList.add("col-md-2");
+    secondClassRow.appendChild(secondClassRightDiv);
+
+    var controlButton=document.createElement("button");
+    controlButton.setAttribute("id","clickControl");
+    controlButton.innerText="Controls"
+    secondClassRightDiv.appendChild(controlButton);
 
     var instructionToggle=document.getElementById("clickInstruction");
     instructionToggle.addEventListener("click",toggleInstruction);

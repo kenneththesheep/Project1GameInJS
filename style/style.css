@@ -1,35 +1,68 @@
-.StartScreenText{
-	color:green;
-	text-align: center;
+body{
+
+	background-color:#E6E6E6;
+}
+.header{
+	width:27%;
+	padding-top:163px;
+	margin:0px auto;
+}
+
+.headerText{
+	color:black;
+	text-align: center;*/
 	  margin: 72px auto ;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Permanent Marker', cursive;
-  font-size:80px;
-
+  font-family: 'Metal Mania', cursive;
+  font-size:72px;
+  background-color:rgba(255, 255, 255, 0.3);
+  /*opacity: 0.4;*/
 }
+#Start{
+	align-self: center;
+	text-align: center;
+	margin:0px auto;
+	font-size:30px;
+	border-radius: 12px;
+	font-family: 'Lacquer', cursive;
+	background-color: #4178BF;
+	border:3px solid black;
+}
+.button{
+	width:50% ;
+	align-self:center;
+	display:flex;
+	margin: 54px auto 0px auto;
+}
+
 .show{
 
 }
-.header{
-	width:100%;
-	margin:15px auto;
-	/*margin-left: 77px;*/
-}
+
 #clickInstruction{
-	margin-left:77px;
+border-radius: 50%;
+margin-left:30px;
+	font-family: 'Lacquer', cursive;
+	border:3px solid black;
+	background-color: #4178BF;
 }
 #clickControl{
-	margin-left:75px;
+border-radius: 50%;
+margin-left:30px;
+	font-family: 'Lacquer', cursive;
+		border:3px solid black;
+		background-color: #4178BF;
 }
 .startBox{
-	background-color: #999999;
-	border:1px solid black;
+	/*background-color: #999999;*/
+	/*border:1px solid black;*/
 	height:900px;
-	/*background-image:url("../frame/frame.png");
+	background-image: url("../background/gameStartScreen.jpg");
 	background-repeat: no-repeat;
-  background-size: stretch;*/
+	background-size: stretch;
+	background-position: center;
 }
 .hidden{
 	display:none;
@@ -38,32 +71,30 @@
 	display:block;
 }
 
-h2{
-	text-align:center;
-}
-.instruction{
-	text-align:center;
-	margin-left:77px;
-	display:none;
-}
-.controls{
-	text-align: center;
-	margin-left:77px;
-	display:none;
-}
-#Start{
-	align-self: center;
-	text-align: center;
-	margin:0px auto;
-	font-size:30px;
-}
-.button{
-	width:100% ;
-	justify-content:center;
-	display:flex;
-	margin-left:37px;
+.button-align{
+	align-content:center;
+	justify-content: :center;
 
 }
+.instruction{
+	background:white;
+	border:1px solid black;
+	visibility:hidden;
+	/*visibility: visible;*/
+	font-family: 'Amatic SC', cursive;
+	text-align: center;
+
+
+}
+.controls{
+		background:white;
+	border:1px solid black;
+	visibility:hidden;
+	/*visibility: visible;*/
+	font-family: 'Amatic SC', cursive;
+	text-align: center;
+}
+
 .imageBox{
 	width:100%;
 	margin-left:30px;
@@ -87,7 +118,7 @@ height:283px;
 	background-image: url("../background/bed.jpg");
 	background-repeat: no-repeat;
 	background-size: contain;
-	background-position: center;
+	background-position: contain;
 }
 .GameMessageDiv={
 		justify-content:center;
