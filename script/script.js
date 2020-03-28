@@ -311,6 +311,14 @@ var seeBaby=function(){
     Message.innerText="Better get him to sleep before he drives me insane!";
     }
 }
+// creation of map
+var mapMode=function(){
+    console.log("map mode");
+    console.log(player.xCoordinate.toString());
+    console.log(player.yCoordinate.toString());
+    var mapDisplayUrl="map"+player.yCoordinate.toString()+player.xCoordinate.toString();
+    console.log(mapDisplayUrl);
+}
 
 //This function is to check for key press and only activated when game start
 var checkKey=function(event){
@@ -666,7 +674,16 @@ var checkKey=function(event){
                     var sleepMessage=document.getElementById("Message");
                     sleepMessage.innerText="You can sleep anywhere I see, but now it is not the time";
             }
-        }}
+        }
+                else if(event.keyCode===77)
+        {
+        //M Key to map
+            console.log("M key pressed");
+            mapMode();
+
+        }
+
+    }
     }
 
 // Game interaction functions end here
@@ -749,7 +766,7 @@ var gameScreen=function(event){
     staminaText.setAttribute("id","staminaCount");
     staminaText.innerText="Stamina: 100";
     stamina.appendChild(staminaText);
-    timerIntervalFunction=setInterval(timerCallBack,500);
+    timerIntervalFunction=setInterval(timerCallBack,2000);
 }
 
 
