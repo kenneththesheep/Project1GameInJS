@@ -234,6 +234,9 @@ var loseImage4=document.getElementById("gamescreen");
 loseImage4.style.backgroundImage="url('background/noStamina.jpg')";
 var loseMessage4=document.getElementById("Message");
 loseMessage4.innerText="You have fainted in your home. Goodness know how but ya. You will return to the main screen in 10 seconds";
+    var displayStamina=document.getElementById("staminaCount");
+        displayStamina.innerText=`Stamina: 0`;
+        //noStamina();
 clearInterval(timerIntervalFunction);
 restart=setTimeout(backInitial,10000);
 }
@@ -858,7 +861,7 @@ var initialScreen=function(){
     startBox.appendChild(controlDiv);
 
     var controlPara=document.createElement('p');
-    controlPara.innerHTML="Arrow keys to move. <br>Space to search.<br> F to feed <br> C to change diapers.<br> S to go back to sleep";
+    controlPara.innerHTML="Arrow keys to move. <br>Space to search.<br> F to feed <br> C to change diapers.<br> S to go back to sleep. <br> m to toggle map mode";
     controlDiv.appendChild(controlPara);
 
     var buttonDiv=document.createElement('div');
