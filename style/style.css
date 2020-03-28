@@ -101,6 +101,13 @@ height:283px;
 	height:200px;
 	width:100%;
 }
+.staminaGauge{
+	width:100%;
+	background-color:#B3B3B3;
+	justify-content: center;
+	display:flex;
+	margin-top: 1px;
+}
 .milkContainer{
 	background:gray;
 	width:48%;
@@ -127,11 +134,13 @@ height:283px;
 
 .stamina{
 	background:gray;
-	width:98%;
+	width:50%;
 	border:4px solid black;
-	display:flex;
+	/*display:flex;*/
+	display:inline-flex;
 	height:53%;
 	font-size:40px;
+	align-content: center;
 
 }
 #staminaCount{

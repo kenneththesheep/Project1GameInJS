@@ -713,9 +713,14 @@ var gameScreen=function(event){
     pegContainer.classList.add("pegContainer");
     panel.appendChild(pegContainer);
 
+    var staminaGuage=document.createElement("div");
+    staminaGuage.classList.add("staminaGauge");
+    gameContainer.appendChild(staminaGuage);
+
+
     var stamina=document.createElement("div");
     stamina.classList.add("stamina");
-    panel.appendChild(stamina);
+    staminaGuage.appendChild(stamina);
 
     var staminaText=document.createElement("p");
     staminaText.setAttribute("id","staminaCount");
