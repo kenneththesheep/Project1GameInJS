@@ -5,6 +5,7 @@ var toggleInstructionSwitch=false;
 var toggleControlSwitch=false;
 var restart;
 var timerIntervalFunction;
+var mapStatus=false;
 //player object
 var player=
 {
@@ -682,8 +683,39 @@ var checkKey=function(event){
                 else if(event.keyCode===77)
         {
         //M Key to map
-            console.log("M key pressed");
-            mapMode();
+            mapStatus= !mapStatus;
+            if(mapStatus){
+                        console.log("M key pressed");
+                        mapMode();
+                    }
+            else{
+                        switch(playAreaArray[player.yCoordinate][player.xCoordinate])
+                    {
+                        case "l":
+                        legoStep();
+                        break;
+                        case "t":
+                        tableBump();
+                        break;
+                        case "x":
+                        darkRoom();
+                        break;
+                        case "m":
+                        darkRoom();
+                        break;
+                        case "p":
+                        darkRoom();
+                        break;
+                        case "bed":
+                        seeBed();
+                        break;
+                        case "baby":
+                        seeBaby();
+                        break;
+                    }
+
+
+            }
 
         }
 
