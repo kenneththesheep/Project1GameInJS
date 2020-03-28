@@ -316,8 +316,12 @@ var mapMode=function(){
     console.log("map mode");
     console.log(player.xCoordinate.toString());
     console.log(player.yCoordinate.toString());
-    var mapDisplayUrl="map"+player.yCoordinate.toString()+player.xCoordinate.toString();
+    var mapDisplayUrl="map/map"+player.yCoordinate.toString()+player.xCoordinate.toString()+".png";
     console.log(mapDisplayUrl);
+    console.log(typeof mapDisplayUrl);
+
+    var mapImage=document.getElementById("gamescreen");
+    mapImage.style.backgroundImage=`url(${mapDisplayUrl})`;
 }
 
 //This function is to check for key press and only activated when game start
