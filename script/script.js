@@ -61,8 +61,18 @@ playAreaArray=fixAreaArray;
 var testCount=5;
 var timerCallBack=function(){
 
-    console.log(testCount);
-    testCount +=5;
+    console.log(player.stamina);
+
+    var displayStamina=document.getElementById("staminaCount");
+    player.stamina -=1;
+    if(player.stamina<=0){
+        displayStamina.innerText=`Stamina: 0`;
+        noStamina();
+    }
+    else
+    {
+        displayStamina.innerText=`Stamina: ${player.stamina}`;
+    }
 }
 //Boundary check to ensure not bumped into the wall
 var boundaryCheck=function(){
@@ -739,7 +749,7 @@ var gameScreen=function(event){
     staminaText.setAttribute("id","staminaCount");
     staminaText.innerText="Stamina: 100";
     stamina.appendChild(staminaText);
-    timerIntervalFunction=setInterval(timerCallBack,5000);
+    timerIntervalFunction=setInterval(timerCallBack,500);
 }
 
 
