@@ -67,12 +67,12 @@ var timerCallBack=function(){
     var displayStamina=document.getElementById("staminaCount");
     player.stamina -=1;
     if(player.stamina<=0){
-        displayStamina.innerText=`Stamina: 0`;
+        displayStamina.innerText=`0`;
         noStamina();
     }
     else
     {
-        displayStamina.innerText=`Stamina: ${player.stamina}`;
+        displayStamina.innerText=`${player.stamina}`;
     }
 }
 //Boundary check to ensure not bumped into the wall
@@ -235,7 +235,7 @@ loseImage4.style.backgroundImage="url('background/noStamina.jpg')";
 var loseMessage4=document.getElementById("Message");
 loseMessage4.innerText="You have fainted in your home. Goodness know how but ya. You will return to the main screen in 10 seconds";
     var displayStamina=document.getElementById("staminaCount");
-        displayStamina.innerText=`Stamina: 0`;
+        displayStamina.innerText=`0`;
         //noStamina();
 clearInterval(timerIntervalFunction);
 restart=setTimeout(backInitial,10000);
@@ -260,7 +260,7 @@ var legoStep=function(){
     var Message=document.getElementById("Message");
     Message.innerText="Ouch, why is the lego here? To clear in the morning";
     var staminaBar=document.getElementById("staminaCount");
-    staminaBar.innerText=`Stamina: ${player.stamina}`;
+    staminaBar.innerText=`${player.stamina}`;
     if(player.stamina<=0)
     {
         noStamina();
@@ -275,7 +275,7 @@ var tableBump=function(){
     var Message=document.getElementById("Message");
     Message.innerText="Wa Lao! Who left the stupid table here!";
     var staminaBar=document.getElementById("staminaCount");
-    staminaBar.innerText=`Stamina: ${player.stamina}`;
+    staminaBar.innerText=`${player.stamina}`;
     if(player.stamina<=0)
     {
                 noStamina();
@@ -757,55 +757,133 @@ var gameScreen=function(event){
     console.log("test");
     gameStart=true;
     document.body.innerHTML="";
-    document.body.style.backgroundColor="#E6E6E6";
+    document.body.style.backgroundColor="black";
     var gameContainer=document.createElement("div");
     gameContainer.classList.add("gamecontainer");
     document.body.appendChild(gameContainer);
+//first container
+    var firstContainer=document.createElement("div");
+    firstContainer.classList.add("container");
+    gameContainer.appendChild(firstContainer);
 
-    var gameTitle=document.createElement("h2");
-    gameTitle.innerText="Baby Dungeon";
-    gameContainer.appendChild(gameTitle);
+    var firstContainerRow=document.createElement("div");
+    firstContainerRow.classList.add("row");
+    firstContainer.appendChild(firstContainerRow);
 
-    var gameScreen=document.createElement("div");
-    gameScreen.classList.add("gamescreen");
-    gameScreen.setAttribute("id","gamescreen");
-    gameContainer.appendChild(gameScreen);
+    var firstContainerLeftDiv=document.createElement("div");
+    firstContainerLeftDiv.classList.add("col-md-2");
+    firstContainerLeftDiv.classList.add("test");
+    firstContainerRow.appendChild(firstContainerLeftDiv);
 
-    var gameMessageDiv=document.createElement("div");
-    gameMessageDiv.classList.add("GameMessageDiv");
-    gameContainer.appendChild(gameMessageDiv);
+    var circle=document.createElement("div");
+    circle.classList.add("circle");
+    firstContainerLeftDiv.appendChild(circle);
 
-    var gameMessage=document.createElement("h3");
-    gameMessage.setAttribute("id", "Message");
-    gameMessage.innerText="Let's stop the baby from crying. Wonder who turned out the lights";
-    gameMessageDiv.appendChild(gameMessage);
+    var circleText=document.createElement("div");
+    circleText.classList.add("circle-txt");
+    circleText.setAttribute("id","staminaCount");
+    circleText.innerText="100";
+    circle.appendChild(circleText);
 
-    var panel=document.createElement("div");
-    panel.classList.add("panel");
-    gameContainer.appendChild(panel);
+    var firstContainerMiddleDiv=document.createElement("div");
+    firstContainerMiddleDiv.classList.add("col-md-8");
+    firstContainerMiddleDiv.classList.add("test");
+    firstContainerRow.appendChild(firstContainerMiddleDiv);
 
-    var milkContainer=document.createElement("div");
-    milkContainer.classList.add("milkContainer");
-    panel.appendChild(milkContainer);
+    var firstContainerRightDiv=document.createElement("div");
+    firstContainerRightDiv.classList.add("col-md-2");
+    firstContainerRightDiv.classList.add("test");
+    firstContainerRow.appendChild(firstContainerRightDiv);
+
+    var inventoryText=document.createElement("span");
+    inventoryText.classList.add("inventory");
+    inventoryText.innerHTML="<br>Inventory";
+    firstContainerRightDiv.appendChild(inventoryText);
+
+//second container
+ var secondContainer=document.createElement("div");
+ secondContainer.classList.add("container");
+ gameContainer.appendChild(secondContainer);
+
+ var secondContainerRow=document.createElement("div");
+ secondContainerRow.classList.add("row");
+ secondContainer.appendChild(secondContainerRow);
+
+ var secondContainerLeftDiv=document.createElement("div");
+ secondContainerLeftDiv.classList.add("col-md-2");
+ secondContainerLeftDiv.classList.add(
+    "test");
+ secondContainerRow.appendChild(secondContainerLeftDiv);
+
+  var secondContainerMiddleDiv=document.createElement("div");
+ secondContainerMiddleDiv.classList.add("col-md-8");
+ secondContainerMiddleDiv.classList.add(
+    "test");
+ secondContainerRow.appendChild(secondContainerMiddleDiv);
+
+var gameScreen=document.createElement("div");
+gameScreen.classList.add("gamescreen");
+gameScreen.setAttribute("id","gamescreen");
+secondContainerMiddleDiv.appendChild(gameScreen);
+
+  var secondContainerRightDiv=document.createElement("div");
+ secondContainerRightDiv.classList.add("col-md-2");
+ secondContainerRightDiv.classList.add(
+    "test");
+ secondContainerRow.appendChild(secondContainerRightDiv);
+
+var secondContainerRightDivFirstRow=document.createElement("div");
+secondContainerRightDivFirstRow.classList.add("row");
+secondContainerRightDivFirstRow.classList.add("test");
+secondContainerRightDiv.appendChild(secondContainerRightDivFirstRow);
+
+var milkcontainer=document.createElement("div");
+milkcontainer.classList.add("milkContainer");
+secondContainerRightDivFirstRow.appendChild(milkcontainer);
+
+var secondContainerRightDivSecondRow=document.createElement("div");
+secondContainerRightDivSecondRow.classList.add("row");
+secondContainerRightDivSecondRow.classList.add("test");
+secondContainerRightDiv.appendChild(secondContainerRightDivSecondRow);
+
+var pegcontainer=document.createElement("div");
+pegcontainer.classList.add("pegContainer");
+secondContainerRightDivSecondRow.appendChild(pegcontainer);
 
 
-    var pegContainer=document.createElement("div");
-    pegContainer.classList.add("pegContainer");
-    panel.appendChild(pegContainer);
+var thirdContainer=document.createElement("div");
+thirdContainer.classList.add("container");
+gameContainer.appendChild(thirdContainer);
 
-    var staminaGuage=document.createElement("div");
-    staminaGuage.classList.add("staminaGauge");
-    gameContainer.appendChild(staminaGuage);
+var thirdContainerRow=document.createElement("div");
+thirdContainerRow.classList.add("row");
+thirdContainer.appendChild(thirdContainerRow);
+
+var thirdContainerLeftDiv=document.createElement("div");
+thirdContainerLeftDiv.classList.add("col-md-2");
+thirdContainerLeftDiv.classList.add("test");
+thirdContainerRow.appendChild(thirdContainerLeftDiv);
+
+var thirdContainerMiddleDiv=document.createElement("div");
+thirdContainerLeftDiv.classList.add("col-md-8");
+thirdContainerLeftDiv.classList.add("test");
+thirdContainerRow.appendChild(thirdContainerMiddleDiv);
+
+var message=document.createElement("span");
+message.setAttribute("id","Message");
+message.innerText="Let's stop the baby from crying. Wonder who turned out the lights";
+thirdContainerMiddleDiv.appendChild(message);
+
+var thirdContainerRightDiv=document.createElement("div");
+thirdContainerRightDiv.classList.add("col-md-2");
+thirdContainerRightDiv.classList.add("test");
+thirdContainerRow.appendChild(thirdContainerRightDiv);
 
 
-    var stamina=document.createElement("div");
-    stamina.classList.add("stamina");
-    staminaGuage.appendChild(stamina);
 
-    var staminaText=document.createElement("p");
-    staminaText.setAttribute("id","staminaCount");
-    staminaText.innerText="Stamina: 100";
-    stamina.appendChild(staminaText);
+
+
+
     timerIntervalFunction=setInterval(timerCallBack,2000);
 }
 
