@@ -1,9 +1,9 @@
 # Project1GameInJS
-~ 
+
 ~ Baby Dungeon Manual~
 
 --- Welcome Speech---
-I see you have interest in reading a portion of the game where most people will either skip or use it as a bedtime story. No matter whether you have accidentally stumble into this portion or are really geeky, we welcome you
+<br>I see you have interest in reading a portion of the game where most people will either skip or use it as a bedtime story. No matter whether you have accidentally stumble into this portion or are really geeky, we welcome you
 
 ---Storyline---
 You are a daddy who is woken up in the middle of the night.
