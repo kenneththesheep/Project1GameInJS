@@ -4,6 +4,7 @@ var gameStart=false;
 var toggleInstructionSwitch=false;
 var toggleControlSwitch=false;
 var restart;
+var timerIntervalFunction;
 //player object
 var player=
 {
@@ -56,6 +57,13 @@ var fixAreaArray=
     ["t","x","x","x","x","baby"]
 ];
 playAreaArray=fixAreaArray;
+//timer function
+var testCount=5;
+var timerCallBack=function(){
+
+    console.log(testCount);
+    testCount +=5;
+}
 //Boundary check to ensure not bumped into the wall
 var boundaryCheck=function(){
     if((player.yCoordinate<0) || (player.yCoordinate>=playAreaArray.length) ||player.xCoordinate<0||(player.xCoordinate>=playAreaArray[player.yCoordinate].length))
@@ -99,6 +107,7 @@ var winImage=document.getElementById("gamescreen");
 winImage.style.backgroundImage="url('background/happySleepingMan.jpg')";
 var winMessage=document.getElementById("Message");
 winMessage.innerText="Good job. You have won. But tomorrow the cycle repeats again. You will return back to main screen in 10 seconds";
+clearInterval(timerIntervalFunction);
 //to add win
 restart=setTimeout(backInitial,10000);
 }
@@ -129,6 +138,7 @@ var loseImage1=document.getElementById("gamescreen");
 loseImage1.style.backgroundImage="url('background/zombieBaby.jpeg')";
 var loseMessage1=document.getElementById("Message");
 loseMessage1.innerText="You have been too brave to feed the baby with your life. You lost.... Well, fortunately it is just a nightmare(or is it). You will return back to main screen in 10 seconds";
+clearInterval(timerIntervalFunction);
 restart=setTimeout(backInitial,10000);
 
 }
@@ -157,6 +167,7 @@ var loseImage2=document.getElementById("gamescreen");
 loseImage2.style.backgroundImage="url('background/nuclear.jpg')";
 var loseMessage2=document.getElementById("Message");
 loseMessage2.innerText="The smell of the poop blew your mind. Well fortunately, your wife was there to save you. You will return to the main screen in 10 seconds";
+clearInterval(timerIntervalFunction);
 restart=setTimeout(backInitial,10000);
 }
 
@@ -184,6 +195,7 @@ var loseImage3=document.getElementById("gamescreen");
 loseImage3.style.backgroundImage="url('background/AngryWife.png')";
 var loseMessage3=document.getElementById("Message");
 loseMessage3.innerText="Hell hath no fury like a woman scorned. Serve you right for letting your wife work alone to face the demon spawn. You will return to the main screen in 10 seconds";
+clearInterval(timerIntervalFunction);
 restart=setTimeout(backInitial,10000);
 }
 
@@ -211,6 +223,7 @@ var loseImage4=document.getElementById("gamescreen");
 loseImage4.style.backgroundImage="url('background/noStamina.jpg')";
 var loseMessage4=document.getElementById("Message");
 loseMessage4.innerText="You have fainted in your home. Goodness know how but ya. You will return to the main screen in 10 seconds";
+clearInterval(timerIntervalFunction);
 restart=setTimeout(backInitial,10000);
 }
 
@@ -726,8 +739,9 @@ var gameScreen=function(event){
     staminaText.setAttribute("id","staminaCount");
     staminaText.innerText="Stamina: 100";
     stamina.appendChild(staminaText);
-
+    timerIntervalFunction=setInterval(timerCallBack,5000);
 }
+
 
 
 //title Screen
