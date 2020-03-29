@@ -781,11 +781,13 @@ var gameScreen=function(event){
     firstContainerRow.appendChild(firstContainerLeftDiv);
 
     var circle=document.createElement("div");
-    circle.classList.add("circle");
+    //circle.classList.add("circle");(Delete if heart fails)
+    circle.classList.add("heart");
     firstContainerLeftDiv.appendChild(circle);
 
     var circleText=document.createElement("div");
-    circleText.classList.add("circle-txt");
+    //circleText.classList.add("circle-txt");(Delete if heart fails)
+    circleText.classList.add("heartText");
     circleText.setAttribute("id","staminaCount");
     circleText.innerText="100";
     circle.appendChild(circleText);
@@ -862,28 +864,32 @@ gameContainer.appendChild(thirdContainer);
 
 var thirdContainerRow=document.createElement("div");
 thirdContainerRow.classList.add("row");
+thirdContainerRow.classList.add("justify-content-center");
 thirdContainer.appendChild(thirdContainerRow);
 
+/*
 var thirdContainerLeftDiv=document.createElement("div");
 thirdContainerLeftDiv.classList.add("col-md-2");
 thirdContainerLeftDiv.classList.add("test");
 thirdContainerRow.appendChild(thirdContainerLeftDiv);
-
+*/
 var thirdContainerMiddleDiv=document.createElement("div");
-thirdContainerLeftDiv.classList.add("col-md-8");
-thirdContainerLeftDiv.classList.add("test");
+thirdContainerMiddleDiv.classList.add("col-md-10");
+thirdContainerMiddleDiv.classList.add("test");
+thirdContainerMiddleDiv.classList.add("text-center");
 thirdContainerRow.appendChild(thirdContainerMiddleDiv);
 
 var message=document.createElement("span");
 message.setAttribute("id","Message");
+//message.classList.add("justify-content-center");
 message.innerText="Let's stop the baby from crying. Wonder who turned out the lights";
 thirdContainerMiddleDiv.appendChild(message);
-
+/*
 var thirdContainerRightDiv=document.createElement("div");
 thirdContainerRightDiv.classList.add("col-md-2");
 thirdContainerRightDiv.classList.add("test");
 thirdContainerRow.appendChild(thirdContainerRightDiv);
-
+*/
 
 
 

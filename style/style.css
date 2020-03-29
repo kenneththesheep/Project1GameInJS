@@ -43,17 +43,21 @@ body{
 
 #clickInstruction{
 border-radius: 50%;
-margin-left:30px;
+/*margin-left:15px;*/
+margin:0px auto;
 	font-family: 'Lacquer', cursive;
 	border:3px solid black;
 	background-color: #4178BF;
+	font-size: 25px
 }
 #clickControl{
 border-radius: 50%;
-margin-left:30px;
+/*margin-left:30px;*/
+margin:0px auto;
 	font-family: 'Lacquer', cursive;
 		border:3px solid black;
 		background-color: #4178BF;
+		font-size:25px;
 }
 .startBox{
 	/*background-color: #999999;*/
@@ -93,6 +97,7 @@ margin-left:30px;
 	/*visibility: visible;*/
 	font-family: 'Amatic SC', cursive;
 	text-align: center;
+
 }
 
 .imageBox{
@@ -161,7 +166,8 @@ background:black;
 height:283px;
 	background-image: url("../background/bed.jpg");
 	background-repeat: no-repeat;
-	background-size: cover;
+/*	background-size: cover;*/
+	background-size: 100% 100%;
 	background-position: center;
 	border:3px solid gray;
 }
@@ -174,6 +180,9 @@ height:283px;
 	font-size:40px;
 	font-family: 'Amatic SC', cursive;
 	  background-color:rgba(255, 255, 255, 0.3);
+	  justify-content: center;
+	  align-content:center;
+	  /*margin:0px auto;*/
 }
 .panel{
 	background-color:#B3B3B3;
@@ -226,4 +235,60 @@ height:283px;
 #staminaCount{
 	text-align: center;
 
+}
+
+.heart {
+  position:relative;
+  width:100px;
+  height:100px;
+}
+
+.heart:before,.heart:after {
+  position:absolute;
+  content:"";
+  left:50px;
+  top:0;
+  width:50px;
+  height:80px;
+  background:#F00000;
+  -moz-border-radius:50px 50px 0 0;
+  border-radius:50px 50px 0 0;
+  -webkit-transform:rotate(-45deg);
+  -moz-transform:rotate(-45deg);
+  -ms-transform:rotate(-45deg);
+  -o-transform:rotate(-45deg);
+  transform:rotate(-45deg);
+  -webkit-transform-origin:0 100%;
+  -moz-transform-origin:0 100%;
+  -ms-transform-origin:0 100%;
+  -o-transform-origin:0 100%;
+  transform-origin:0 100%;
+}
+
+.heart:after {
+  left: 0;
+  -webkit-transform:rotate(45deg);
+  -moz-transform:rotate(45deg);
+  -ms-transform:rotate(45deg);
+  -o-transform:rotate(45deg);
+  transform:rotate(45deg);
+  -webkit-transform-origin:100% 100%;
+  -moz-transform-origin:100% 100%;
+  -ms-transform-origin:100% 100%;
+  -o-transform-origin:100% 100%;
+  transform-origin:100% 100%;
+}
+
+.heartText{
+    position:absolute;
+    z-index:3;
+    margin-left:18px;
+    margin-top:5px;
+
+    color:white;
+    display:block;
+
+       font-family: arial, sans-serif;
+        font-size: 40px;
+        font-weight: bold;
 }
