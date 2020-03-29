@@ -81,9 +81,11 @@ margin:0px auto;
 
 }
 .instruction{
-	background:white;
+	/*background:white;*/
+	background-color:rgba(255, 255, 255, 0.7);
 	border:1px solid black;
 	visibility:hidden;
+	font-size:20px;
 	/*visibility: visible;*/
 	font-family: 'Amatic SC', cursive;
 	text-align: center;
@@ -91,9 +93,11 @@ margin:0px auto;
 
 }
 .controls{
-		background:white;
+		/*background:white;*/
+		background-color:rgba(255, 255, 255, 0.7);
 	border:1px solid black;
 	visibility:hidden;
+	font-size:20px;
 	/*visibility: visible;*/
 	font-family: 'Amatic SC', cursive;
 	text-align: center;
@@ -179,7 +183,7 @@ height:283px;
 	text-align: center;
 	font-size:40px;
 	font-family: 'Amatic SC', cursive;
-	  background-color:rgba(255, 255, 255, 0.3);
+	  background-color:rgba(255, 255, 255, 0.7);
 	  justify-content: center;
 	  align-content:center;
 	  /*margin:0px auto;*/

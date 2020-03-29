@@ -945,7 +945,7 @@ var initialScreen=function(){
     var firstClassMiddleDiv=document.createElement("div");
     firstClassMiddleDiv.classList.add("col-md-2");
      firstClassMiddleDiv.classList.add("instruction");
-    firstClassMiddleDiv.innerHTML="You are a daddy who is woken up in the middle of the night. <br> You hear your kid crying.<br> You need to move in a dark room and find his milk bottle and a peg (you know how stinky a diapers can get). <br> Once done, look for him, feed him, change his diaper and go back to bed.<br><br><br><br><br><br>";
+    firstClassMiddleDiv.innerHTML="You are a daddy who is woken up in the middle of the night. <br> You hear your kid crying.<br> You need to move in a dark room and find his milk bottle and a peg (you know how stinky a diapers can get). <br> Once done, look for him, feed him, change his diaper and go back to bed.<br><br>";
     firstClassRow.appendChild(firstClassMiddleDiv);
 
 
