@@ -161,8 +161,8 @@ background:black;
 height:283px;
 	background-image: url("../background/bed.jpg");
 	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: contain;
+	background-size: cover;
+	background-position: center;
 	border:3px solid gray;
 }
 .GameMessageDiv={
