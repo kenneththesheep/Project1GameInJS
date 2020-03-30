@@ -115,7 +115,33 @@ function sound(src) {
 }
 //initialisation
 var reinitialisation=function(){
-
+    gameStart=false;
+    fixAreaArray=
+[
+    ["bed","x","t","x","x","m"],
+    ["x","x","x","l","x","x"],
+    ["x","x","l","x","x","x"],
+    ["x","p","x","x","x","x"],
+    ["x","x","t","x","x","t"],
+    ["t","x","x","x","x","baby"]
+];
+playAreaArray=fixAreaArray;
+baby=
+{
+    fed:false,
+    diaper:false,
+    sleep:false
+};
+player=
+{
+    name:"",
+    xCoordinate:0,
+    yCoordinate:0,
+    stamina: 100,
+    milk:false,
+    peg:false
+};
+dungeonSound.stop();
 }
 
 
@@ -160,33 +186,7 @@ var backInitial=function(){
 var winCase=function(){
     win.play();
     console.log("You have won!")
-    gameStart=false;
-    fixAreaArray=
-[
-    ["bed","x","t","x","x","m"],
-    ["x","x","x","l","x","x"],
-    ["x","x","l","x","x","x"],
-    ["x","p","x","x","x","x"],
-    ["x","x","t","x","x","t"],
-    ["t","x","x","x","x","baby"]
-];
-playAreaArray=fixAreaArray;
-baby=
-{
-    fed:false,
-    diaper:false,
-    sleep:false
-};
-player=
-{
-    name:"",
-    xCoordinate:0,
-    yCoordinate:0,
-    stamina: 100,
-    milk:false,
-    peg:false
-};
-dungeonSound.stop();
+reinitialisation();
 var winImage=document.getElementById("gamescreen");
 winImage.style.backgroundImage="url('background/happySleepingMan.jpg')";
 var winMessage=document.getElementById("Message");
@@ -202,32 +202,7 @@ restart=setTimeout(backInitial,10000);
 var eatenAlive=function(){
     zombieBaby.play();
     console.log("You have been eaten alive. Zombie babies!");
-    fixAreaArray=
-[
-    ["bed","x","t","x","x","m"],
-    ["x","x","x","l","x","x"],
-    ["x","x","l","x","x","x"],
-    ["x","p","x","x","x","x"],
-    ["x","x","t","x","x","t"],
-    ["t","x","x","x","x","baby"]
-];
-playAreaArray=fixAreaArray;
-baby=
-{
-    fed:false,
-    diaper:false,
-    sleep:false
-};
-player=
-{
-    name:"",
-    xCoordinate:0,
-    yCoordinate:0,
-    stamina: 100,
-    milk:false,
-    peg:false
-};
-dungeonSound.stop();
+reinitialisation();
 var loseImage1=document.getElementById("gamescreen");
 loseImage1.style.backgroundImage="url('background/zombieBaby.jpeg')";
 var loseMessage1=document.getElementById("Message");
@@ -241,32 +216,7 @@ restart=setTimeout(backInitial,10000);
 var nuclearBomb=function(){
     explode.play();
     console.log("A nuclear bomb has exploded in front of you");
-    fixAreaArray=
-[
-    ["bed","x","t","x","x","m"],
-    ["x","x","x","l","x","x"],
-    ["x","x","l","x","x","x"],
-    ["x","p","x","x","x","x"],
-    ["x","x","t","x","x","t"],
-    ["t","x","x","x","x","baby"]
-];
-playAreaArray=fixAreaArray;
-baby=
-{
-    fed:false,
-    diaper:false,
-    sleep:false
-};
-player=
-{
-    name:"",
-    xCoordinate:0,
-    yCoordinate:0,
-    stamina: 100,
-    milk:false,
-    peg:false
-};
-dungeonSound.stop();
+ reinitialisation();
 var loseImage2=document.getElementById("gamescreen");
 loseImage2.style.backgroundImage="url('background/nuclear.jpg')";
 var loseMessage2=document.getElementById("Message");
@@ -279,32 +229,7 @@ restart=setTimeout(backInitial,10000);
 var womanFury=function(){
     wrath.play();
     console.log("Hell hath no fury like a woman scorned");
-        fixAreaArray=
-[
-    ["bed","x","t","x","x","m"],
-    ["x","x","x","l","x","x"],
-    ["x","x","l","x","x","x"],
-    ["x","p","x","x","x","x"],
-    ["x","x","t","x","x","t"],
-    ["t","x","x","x","x","baby"]
-];
-playAreaArray=fixAreaArray;
-player=
-{
-    name:"",
-    xCoordinate:0,
-    yCoordinate:0,
-    stamina: 100,
-    milk:false,
-    peg:false
-};
-baby=
-{
-    fed:false,
-    diaper:false,
-    sleep:false
-};
-dungeonSound.stop();
+reinitialisation();
 var loseImage3=document.getElementById("gamescreen");
 loseImage3.style.backgroundImage="url('background/AngryWife.png')";
 var loseMessage3=document.getElementById("Message");
@@ -318,32 +243,7 @@ var noStamina=function(){
 
     NoStamina.play();
     console.log("You have fainted in your home. Goodness know how but ya");
-            fixAreaArray=
-[
-    ["bed","x","t","x","x","m"],
-    ["x","x","x","l","x","x"],
-    ["x","x","l","x","x","x"],
-    ["x","p","x","x","x","x"],
-    ["x","x","t","x","x","t"],
-    ["t","x","x","x","x","baby"]
-];
-playAreaArray=fixAreaArray;
-baby=
-{
-    fed:false,
-    diaper:false,
-    sleep:false
-};
-player=
-{
-    name:"",
-    xCoordinate:0,
-    yCoordinate:0,
-    stamina: 100,
-    milk:false,
-    peg:false
-};
-dungeonSound.stop();
+reinitialisation();
 var loseImage4=document.getElementById("gamescreen");
 loseImage4.style.backgroundImage="url('background/noStamina.jpg')";
 var loseMessage4=document.getElementById("Message");
