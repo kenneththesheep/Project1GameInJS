@@ -851,6 +851,10 @@ var checkKey=function(event){
 
 document.addEventListener("keyup",checkKey);
 //toggle messages
+
+
+
+//
 var toggleInstruction=function(event){
 //console.log("toggle");
 toggleInstructionSwitch=!toggleInstructionSwitch;
@@ -1120,43 +1124,7 @@ var baby=
     controlButton.innerText="Controls"
     secondClassRightDiv.appendChild(controlButton);
 
-//creation of audio
-    //startBox
-/*    var iframe=document.createElement("iframe");
-    iframe.setAttribute("src","Music/silence.mp3");
-    iframe.setAttribute("allow","autoplay");
-    iframe.setAttribute("id","audio");
-    startBox.appendChild(iframe);
 
-    var audioStart=document.createElement("audio");
-    audioStart.setAttribute("id", "player");
-    audioStart.loop=true;
-    audioStart.autoplay=true;
-    startBox.appendChild(audioStart);
-
-    var audioSource=document.createElement("source");
-    audioSource.setAttribute("src","Music/ElfenLiedLilium.mp3");
-    audioSource.setAttribute("type","audio/mp3");
-    audioStart.appendChild(audioSource);
-*/
-/*
-    var playBackground=document.getElementById("player");
-
-    var playPromise=playBackground.play();
-     if (playPromise !== undefined) {
-    playPromise.then(_ => {
-      // Automatic playback started!
-      // Show playing UI.
-      playBackground();
-    })
-    .catch(error => {
-      // Auto-play was prevented
-      // Show paused UI.
-    });
-  }
-*/
-
-    //mySound.play();
 
 
     var instructionToggle=document.getElementById("clickInstruction");
@@ -1177,8 +1145,7 @@ var baby=
 
 }
 
-//Window load new html
-//Remember to load after creating the game screen
+
 
 window.onload=function()
 {
@@ -1197,18 +1164,3 @@ window.onload=function()
 
 
 }
-
-
-
-
-//soundEffect
-//var explodeSound="SoundEffect/Explode.mp3";
-//var explode;
-//var NoStaminaSound="SoundEffect/NoStamina.wav";
-//var NoStamina;
-//var WinSound="SoundEffect/Win.wav";
-//var win;
-//var wrathSound="SoundEffect/womanwrath.mp3"
-//var wrath;
-//var zombieBabySound="SoundEffect/zombieBaby.mp3";
-//var zombieBaby;
