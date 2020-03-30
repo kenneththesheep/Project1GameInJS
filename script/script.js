@@ -102,7 +102,7 @@ function soundEffect(src) {
   }
 }
 
-//more for music
+//more for music background
 function sound(src) {
   this.sound = document.createElement("audio");
   this.sound.src = src;
@@ -151,6 +151,23 @@ player =
 dungeonSound.stop();
 }
 
+//Section 6.5: Adjusting stamina length
+var staminaDistanceCheck=function(){
+    var displayStamina = document.getElementById("staminaCount");
+    if(player.stamina === 100)
+    {
+        displayStamina.style.marginLeft = "18px";
+    }
+    else if(player.stamina > 9 && player.stamina < 100)
+    {
+        displayStamina.style.marginLeft = "25px";
+    }
+    else
+    {
+        displayStamina.style.marginLeft = "35px";
+    }
+}
+
 
 //Section 7: Time Interval call back function to deplete the stamina.(Line 157 to 171)
 
@@ -160,6 +177,7 @@ var timerCallBack = function(){
 
     var displayStamina = document.getElementById("staminaCount");
     player.stamina -= 1;
+    staminaDistanceCheck();
     if(player.stamina <= 0){
         displayStamina.innerText = `0`;
         noStamina();
@@ -281,6 +299,7 @@ var legoStep = function(){
     if(staminaDepletion)
     {
             player.stamina -= 5;}
+            staminaDistanceCheck();
     var legoImage = document.getElementById("gamescreen");
     legoImage.style.backgroundImage = "url('background/lego.jpeg')";
     var Message = document.getElementById("Message");
@@ -302,6 +321,7 @@ var tableBump = function(){
     player.stamina -= 10;
     }
       var tableImage = document.getElementById("gamescreen");
+      staminaDistanceCheck();
     tableImage.style.backgroundImage = "url('background/table.jpeg')";
     var Message = document.getElementById("Message");
     Message.innerText = "Wa Lao! Who left the stupid table here!";

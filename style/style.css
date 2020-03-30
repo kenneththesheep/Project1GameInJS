@@ -291,7 +291,9 @@ height:283px;
 .heartText{
     position:absolute;
     z-index:3;
-    margin-left:18px;
+    margin-left:18px;/*for 3 digits*/
+    /*margin-left:25px;*//* for 2 digits*/
+    /*margin-left:35px;*//*for 1 digit*/
     margin-top:5px;
 
     color:white;
