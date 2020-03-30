@@ -140,13 +140,17 @@ margin:0px auto;
 
 }
 .circle {
-        width: 100px;
+        width: 50px;
         border-radius: 50%;
         line-height: 0;
-        background: #bcd6ff;
-        border:1px solid black;
+        background: black;
+        border:1px solid white;
         /* NECESSARY FOR TEXT */
         position: relative;
+        margin-top:230px;
+        margin-left:50px;
+
+
       }
  .circle:after {
         content: "";
@@ -162,6 +166,7 @@ margin:0px auto;
         font-family: arial, sans-serif;
         font-size: 40px;
         font-weight: bold;
+        color: white;
       }
 .gameHeader{
 	width:49%;
@@ -170,7 +175,7 @@ margin:0px auto;
 }
 
 .gamescreen{
-width:85%;
+width:100%;
 	margin:5px auto;
 	justify-content:center;
 	display:flex;

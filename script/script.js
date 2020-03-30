@@ -677,8 +677,6 @@ var checkKey=function(event){
 document.addEventListener("keyup",checkKey);
 //toggle messages
 
-
-
 //
 var toggleInstruction=function(event){
 //console.log("toggle");
@@ -769,6 +767,22 @@ var gameScreen=function(event){
     "test");
  secondContainerRow.appendChild(secondContainerLeftDiv);
 
+var helpCircle=document.createElement("div");
+helpCircle.classList.add("circle");
+helpCircle.setAttribute("id","Help");
+secondContainerLeftDiv.appendChild(helpCircle);
+
+
+var helpCircleText=document.createElement("div");
+helpCircleText.classList.add("circle-txt");
+
+helpCircleText.innerText="?";
+helpCircle.appendChild(helpCircleText);
+
+
+
+
+
   var secondContainerMiddleDiv=document.createElement("div");
  secondContainerMiddleDiv.classList.add("col-md-8");
  secondContainerMiddleDiv.classList.add(
@@ -814,12 +828,7 @@ thirdContainerRow.classList.add("row");
 thirdContainerRow.classList.add("justify-content-center");
 thirdContainer.appendChild(thirdContainerRow);
 
-/*
-var thirdContainerLeftDiv=document.createElement("div");
-thirdContainerLeftDiv.classList.add("col-md-2");
-thirdContainerLeftDiv.classList.add("test");
-thirdContainerRow.appendChild(thirdContainerLeftDiv);
-*/
+
 var thirdContainerMiddleDiv=document.createElement("div");
 thirdContainerMiddleDiv.classList.add("col-md-10");
 thirdContainerMiddleDiv.classList.add("test");
@@ -828,16 +837,9 @@ thirdContainerRow.appendChild(thirdContainerMiddleDiv);
 
 var message=document.createElement("span");
 message.setAttribute("id","Message");
-//message.classList.add("justify-content-center");
+
 message.innerText="Let's stop the baby from crying. Wonder who turned out the lights";
 thirdContainerMiddleDiv.appendChild(message);
-/*
-var thirdContainerRightDiv=document.createElement("div");
-thirdContainerRightDiv.classList.add("col-md-2");
-thirdContainerRightDiv.classList.add("test");
-thirdContainerRow.appendChild(thirdContainerRightDiv);
-*/
-
 
 
 
@@ -853,21 +855,7 @@ var initialScreen=function(){
     gameStart=false;
         document.body.innerHTML="";
     document.body.style.backgroundColor="#E6E6E6";
-player=
-{
-    name:"",
-    xCoordinate:0,
-    yCoordinate:0,
-    stamina: 100,
-    milk:false,
-    peg:false
-};
-var baby=
-{
-    fed:false,
-    diaper:false,
-    sleep:false
-};
+    reinitialisation();
     var startBox=document.createElement("div");
     startBox.classList.add("startBox");
     document.body.appendChild(startBox);
