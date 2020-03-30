@@ -10,6 +10,21 @@ var backgroundMusic="Music/ElfenLiedLilium.mp3";
 var DungeonMusic="Music/MusicBox.mp3"
 var startSound;
 var dungeonSound;
+
+var explodeSound="SoundEffect/Explode.mp3";
+var explode;
+var NoStaminaSound="SoundEffect/NoStamina.wav";
+var NoStamina;
+var WinSound="SoundEffect/Win.wav";
+var win;
+var wrathSound="SoundEffect/womanwrath.mp3"
+var wrath;
+var zombieBabySound="SoundEffect/zombieBaby.mp3";
+var zombieBaby;
+var pickUpSound="SoundEffect/pickup.wav";
+var pickUp;
+var ouchSound="SoundEffect/Ouch.mp3";
+var ouch;
 //player object
 var player=
 {
@@ -63,6 +78,23 @@ var fixAreaArray=
 ];
 playAreaArray=fixAreaArray;
 //Music Function
+//more for soundEffect
+function soundEffect(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}
+
+//more for music
 function sound(src) {
   this.sound = document.createElement("audio");
   this.sound.src = src;
@@ -121,6 +153,7 @@ var backInitial=function(){
 
 //win state
 var winCase=function(){
+    win.play();
     console.log("You have won!")
     gameStart=false;
     fixAreaArray=
@@ -132,6 +165,13 @@ var winCase=function(){
     ["x","x","t","x","x","t"],
     ["t","x","x","x","x","baby"]
 ];
+playAreaArray=fixAreaArray;
+baby=
+{
+    fed:false,
+    diaper:false,
+    sleep:false
+};
 player=
 {
     name:"",
@@ -155,6 +195,7 @@ restart=setTimeout(backInitial,10000);
 
 //lose state
 var eatenAlive=function(){
+    zombieBaby.play();
     console.log("You have been eaten alive. Zombie babies!");
     fixAreaArray=
 [
@@ -165,6 +206,13 @@ var eatenAlive=function(){
     ["x","x","t","x","x","t"],
     ["t","x","x","x","x","baby"]
 ];
+playAreaArray=fixAreaArray;
+baby=
+{
+    fed:false,
+    diaper:false,
+    sleep:false
+};
 player=
 {
     name:"",
@@ -186,6 +234,7 @@ restart=setTimeout(backInitial,10000);
 }
 
 var nuclearBomb=function(){
+    explode.play();
     console.log("A nuclear bomb has exploded in front of you");
     fixAreaArray=
 [
@@ -196,6 +245,13 @@ var nuclearBomb=function(){
     ["x","x","t","x","x","t"],
     ["t","x","x","x","x","baby"]
 ];
+playAreaArray=fixAreaArray;
+baby=
+{
+    fed:false,
+    diaper:false,
+    sleep:false
+};
 player=
 {
     name:"",
@@ -216,6 +272,7 @@ restart=setTimeout(backInitial,10000);
 }
 
 var womanFury=function(){
+    wrath.play();
     console.log("Hell hath no fury like a woman scorned");
         fixAreaArray=
 [
@@ -226,6 +283,7 @@ var womanFury=function(){
     ["x","x","t","x","x","t"],
     ["t","x","x","x","x","baby"]
 ];
+playAreaArray=fixAreaArray;
 player=
 {
     name:"",
@@ -234,6 +292,12 @@ player=
     stamina: 100,
     milk:false,
     peg:false
+};
+baby=
+{
+    fed:false,
+    diaper:false,
+    sleep:false
 };
 dungeonSound.stop();
 var loseImage3=document.getElementById("gamescreen");
@@ -246,6 +310,8 @@ restart=setTimeout(backInitial,10000);
 }
 
 var noStamina=function(){
+
+    NoStamina.play();
     console.log("You have fainted in your home. Goodness know how but ya");
             fixAreaArray=
 [
@@ -256,6 +322,13 @@ var noStamina=function(){
     ["x","x","t","x","x","t"],
     ["t","x","x","x","x","baby"]
 ];
+playAreaArray=fixAreaArray;
+baby=
+{
+    fed:false,
+    diaper:false,
+    sleep:false
+};
 player=
 {
     name:"",
@@ -282,6 +355,7 @@ restart=setTimeout(backInitial,10000);
 
 var wallBump=function(){
     console.log("Bump Wall");
+    ouch.play();
     var wallImage=document.getElementById("gamescreen");
     wallImage.style.backgroundImage="url('background/wall.jpeg')";
     var Message=document.getElementById("Message");
@@ -290,7 +364,7 @@ var wallBump=function(){
 
 var legoStep=function(){
     console.log("lego ouch!");
-
+    ouch.play();
     player.stamina-=5;
     var legoImage=document.getElementById("gamescreen");
     legoImage.style.backgroundImage="url('background/lego.jpeg')";
@@ -306,6 +380,7 @@ var legoStep=function(){
 
 var tableBump=function(){
     console.log("table ouch");
+    ouch.play();
     player.stamina-=10;
       var tableImage=document.getElementById("gamescreen");
     tableImage.style.backgroundImage="url('background/table.jpeg')";
@@ -544,6 +619,7 @@ var checkKey=function(event){
                 switch (playAreaArray[player.yCoordinate][player.xCoordinate])
                 {
                     case "m":
+                    pickUp.play();
                     console.log("You have found some milk!");
                     var milkImage=document.querySelector(".milkContainer");
                     milkImage.style.backgroundImage="url('figure/milkBottle.png')";
@@ -553,6 +629,7 @@ var checkKey=function(event){
                     playAreaArray[player.yCoordinate][player.xCoordinate]="x";
                     break;
                     case "p":
+                    pickUp.play();
                     console.log("You have found a peg");
                     var pegImage=document.querySelector(".pegContainer");
                     pegImage.style.backgroundImage="url('figure/peg.png')";
@@ -944,7 +1021,21 @@ var initialScreen=function(){
     gameStart=false;
         document.body.innerHTML="";
     document.body.style.backgroundColor="#E6E6E6";
-
+player=
+{
+    name:"",
+    xCoordinate:0,
+    yCoordinate:0,
+    stamina: 100,
+    milk:false,
+    peg:false
+};
+var baby=
+{
+    fed:false,
+    diaper:false,
+    sleep:false
+};
     var startBox=document.createElement("div");
     startBox.classList.add("startBox");
     document.body.appendChild(startBox);
@@ -1091,7 +1182,29 @@ window.onload=function()
     //console.log("load up");
     startSound = new sound(backgroundMusic);
     dungeonSound=new sound(DungeonMusic);
+    explode=new soundEffect(explodeSound);
+    NoStamina=new soundEffect(NoStaminaSound);
+    win=new soundEffect(WinSound);
+    wrath=new soundEffect(wrathSound);
+    zombieBaby=new soundEffect(zombieBabySound);
+        pickUp=new soundEffect(pickUpSound);
+    ouch=new soundEffect(ouchSound);
     initialScreen();
 
 
 }
+
+
+
+
+//soundEffect
+//var explodeSound="SoundEffect/Explode.mp3";
+//var explode;
+//var NoStaminaSound="SoundEffect/NoStamina.wav";
+//var NoStamina;
+//var WinSound="SoundEffect/Win.wav";
+//var win;
+//var wrathSound="SoundEffect/womanwrath.mp3"
+//var wrath;
+//var zombieBabySound="SoundEffect/zombieBaby.mp3";
+//var zombieBaby;
