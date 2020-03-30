@@ -10,7 +10,7 @@ var backgroundMusic="Music/ElfenLiedLilium.mp3";
 var DungeonMusic="Music/MusicBox.mp3"
 var startSound;
 var dungeonSound;
-
+var staminaDepletion;
 var explodeSound="SoundEffect/Explode.mp3";
 var explode;
 var NoStaminaSound="SoundEffect/NoStamina.wav";
@@ -367,7 +367,9 @@ var wallBump=function(){
 var legoStep=function(){
     console.log("lego ouch!");
     ouch.play();
-    player.stamina-=5;
+    if(staminaDepletion)
+    {
+            player.stamina-=5;}
     var legoImage=document.getElementById("gamescreen");
     legoImage.style.backgroundImage="url('background/lego.jpeg')";
     var Message=document.getElementById("Message");
@@ -383,7 +385,10 @@ var legoStep=function(){
 var tableBump=function(){
     console.log("table ouch");
     ouch.play();
+    if(staminaDepletion)
+    {
     player.stamina-=10;
+    }
       var tableImage=document.getElementById("gamescreen");
     tableImage.style.backgroundImage="url('background/table.jpeg')";
     var Message=document.getElementById("Message");
@@ -455,6 +460,7 @@ var checkKey=function(event){
             {
             // up key pressed
                 player.yCoordinate--;
+                staminaDepletion=true;
                 if(boundaryCheck())
                 {
     //                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:"+ player.xCoordinate);
@@ -499,6 +505,7 @@ var checkKey=function(event){
             {
                 //down key pressed
                 player.yCoordinate++;
+                staminaDepletion=true;
                 if(boundaryCheck()){
     switch(playAreaArray[player.yCoordinate][player.xCoordinate])
                     {
@@ -537,6 +544,7 @@ var checkKey=function(event){
             else if (event.keyCode===39){
             //right key pressed
                 player.xCoordinate++;
+                staminaDepletion=true;
                 if(boundaryCheck()){
     switch(playAreaArray[player.yCoordinate][player.xCoordinate])
                     {
@@ -576,6 +584,7 @@ var checkKey=function(event){
             {
             //left key pressed
                         player.xCoordinate--;
+                        staminaDepletion=true;
                 if(boundaryCheck()){
     switch(playAreaArray[player.yCoordinate][player.xCoordinate])
                     {
@@ -618,6 +627,7 @@ var checkKey=function(event){
             {
 
             //space key pressed to search
+            staminaDepletion=false;
                 switch (playAreaArray[player.yCoordinate][player.xCoordinate])
                 {
                     case "m":
@@ -675,6 +685,7 @@ var checkKey=function(event){
         {
         // F key to feed
         //Logic to feed the kiddo
+        staminaDepletion=false;
         if(playAreaArray[player.yCoordinate][player.xCoordinate]==="baby")
             {
                 //console.log("check milk")
@@ -730,6 +741,7 @@ var checkKey=function(event){
         {
         //C key to Change diapers
         //Logic to change the diapers
+        staminaDepletion=false;
         if(playAreaArray[player.yCoordinate][player.xCoordinate]==="baby")
             {
                 //console.log("check milk")
@@ -783,6 +795,7 @@ var checkKey=function(event){
         else if(event.keyCode===83)
         {
         //S Key to sleep
+        staminaDepletion=false;
             if(playAreaArray[player.yCoordinate][player.xCoordinate]==="bed")
             {
                 console.log("sleep bed");
@@ -807,6 +820,7 @@ var checkKey=function(event){
         {
         //M Key to map
         map.play();
+        staminaDepletion=false;
             mapStatus= !mapStatus;
             if(mapStatus){
                         console.log("M key pressed");
@@ -1084,8 +1098,6 @@ var baby=
     firstClassMiddleDiv.innerHTML="You are a daddy who is woken up in the middle of the night. <br> You hear your kid crying.<br> You need to move in a dark room and find his milk bottle and a peg (you know how stinky a diapers can get). <br> Once done, look for him, feed him, change his diaper and go back to bed.<br><br>";
     firstClassRow.appendChild(firstClassMiddleDiv);
 
-
-
     var firstClassRightDiv=document.createElement("div");
     firstClassRightDiv.classList.add("col-md-2");
       firstClassRightDiv.classList.add("controls");
@@ -1124,32 +1136,21 @@ var baby=
     controlButton.innerText="Controls"
     secondClassRightDiv.appendChild(controlButton);
 
-
-
-
     var instructionToggle=document.getElementById("clickInstruction");
     instructionToggle.addEventListener("click",toggleInstruction);
 
     var controlToggle=document.getElementById("clickControl");
     controlToggle.addEventListener("click",toggleControl);
 
-
-
-
-
     var buttonStart=document.getElementById("Start");
     buttonStart.addEventListener("click",gameScreen);
 
-
-
-
 }
-
-
 
 window.onload=function()
 {
     //console.log("load up");
+    //preload all the background music and sound effect
     startSound = new sound(backgroundMusic);
     dungeonSound=new sound(DungeonMusic);
     explode=new soundEffect(explodeSound);
