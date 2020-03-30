@@ -151,7 +151,7 @@ player =
 dungeonSound.stop();
 }
 
-//Section 6.5: Adjusting stamina length
+//Section 7: Adjusting stamina length (Line 155 to 169)
 var staminaDistanceCheck=function(){
     var displayStamina = document.getElementById("staminaCount");
     if(player.stamina === 100)
@@ -169,7 +169,7 @@ var staminaDistanceCheck=function(){
 }
 
 
-//Section 7: Time Interval call back function to deplete the stamina.(Line 157 to 171)
+//Section 8: Time Interval call back function to deplete the stamina.(Line 174 to 189)
 
 var timerCallBack = function(){
 
@@ -188,7 +188,7 @@ var timerCallBack = function(){
     }
 }
 
-//Section 8: Boundary Check.(Line 173 to 184)
+//Section 9: Boundary Check.(Line 192 to 202)
 //Boundary check to ensure not bumped into the wall
 var boundaryCheck = function(){
     if((player.yCoordinate<0) || (player.yCoordinate >= playAreaArray.length) || player.xCoordinate<0 || (player.xCoordinate >= playAreaArray[player.yCoordinate].length))
@@ -201,13 +201,13 @@ var boundaryCheck = function(){
     }
 }
 
-//Section 9: Call back function to end the 10 second timer from every end state and to reload the initial screen. (Line 187-190)
+//Section 10: Call back function to end the 10 second timer from every end state and to reload the initial screen. (Line 205-208)
 var backInitial = function(){
     initialScreen();
     clearTimeout(restart);
 };
 
-//Section 10 Win state function when you sleep when the baby sleep. (Line 194-204)/
+//Section 11 Win state function when you sleep when the baby sleep. (Line 211-222)/
 var winCase = function(){
     win.play();
     console.log("You have won!")
@@ -221,7 +221,7 @@ clearInterval(timerIntervalFunction);
 restart = setTimeout(backInitial,10000);
 }
 
-//Section 11 Lose state 1 function when you try to feed baby with no milk bottle. (Line 207-218)
+//Section 12 Lose state 1 function when you try to feed baby with no milk bottle. (Line 225-236)
 var eatenAlive = function(){
     zombieBaby.play();
     console.log("You have been eaten alive. Zombie babies!");
@@ -235,7 +235,7 @@ clearInterval(timerIntervalFunction);
 restart = setTimeout(backInitial,10000);
 }
 
-//Section 12 Lose state 2 function when you try to change diaper without peg. (Line 221-232)
+//Section 13 Lose state 2 function when you try to change diaper without peg. (Line 239-250)
 var nuclearBomb = function(){
     explode.play();
     console.log("A nuclear bomb has exploded in front of you");
@@ -249,7 +249,7 @@ clearInterval(timerIntervalFunction);
 restart = setTimeout(backInitial,10000);
 }
 
-//Section 13 Lose state 3 function when you try to sleep without completing your tasks. (Line 235-246)
+//Section 14 Lose state 3 function when you try to sleep without completing your tasks. (Line 253-264)
 var womanFury = function(){
     wrath.play();
     console.log("Hell hath no fury like a woman scorned");
@@ -263,7 +263,7 @@ clearInterval(timerIntervalFunction);
 restart = setTimeout(backInitial,10000);
 }
 
-//Section 14 Lose state 4 function when you lost all your stamina. (Line 249-264)
+//Section 15 Lose state 4 function when you lost all your stamina. (Line 267-282)
 var noStamina = function(){
 
     NoStamina.play();
@@ -282,7 +282,7 @@ restart = setTimeout(backInitial,10000);
 }
 
 // functions if bump wall, step on lego, bump Table
-//Section 15 Function to tell user they bump into wall. (Line 268-275)
+//Section 16 Function to tell user they bump into wall. (Line 286-293)
 var wallBump = function(){
     console.log("Bump Wall");
     ouch.play();
@@ -292,7 +292,7 @@ var wallBump = function(){
     Message.innerText = "You have bumped into the wall. Thought this was your house?";
 }
 
-//Section 16 Function to tell user they step on lego. (Line 278-294)
+//Section 17 Function to tell user they step on lego. (Line 296-313)
 var legoStep = function(){
     console.log("lego ouch!");
     ouch.play();
@@ -312,7 +312,7 @@ var legoStep = function(){
     }
 }
 
-//Section 17 Function to tell user they bump table. (Line 297-314)
+//Section 18 Function to tell user they bump table. (Line 316-334)
 var tableBump = function(){
     console.log("table ouch");
     ouch.play();
@@ -333,7 +333,7 @@ var tableBump = function(){
     }
 }
 
-//Section 18 Functions to tell user where they navigated to (Line 317 to 348)
+//Section 19 Functions to tell user where they navigated to (Line 337 to 368)
 var darkRoom = function(){
     console.log("dark room");
     var darkImage = document.getElementById("gamescreen");
@@ -368,7 +368,7 @@ var seeBaby = function(){
     }
 }
 
-// Section 19: Display of map(Line 352 to 362)
+// Section 20: Display of map(Line 372 to 382)
 var mapMode = function(){
     console.log("map mode");
     console.log(player.xCoordinate.toString());
@@ -381,7 +381,7 @@ var mapMode = function(){
     mapImage.style.backgroundImage = `url(${mapDisplayUrl})`;
 }
 
-// Section 20: Function to check what the user stepped on. l for lego, t for table, x for neutral ground, m for milk, p for peg, bed for bed and baby for baby(Line 365 to 390)
+// Section 21: Function to check what the user stepped on. l for lego, t for table, x for neutral ground, m for milk, p for peg, bed for bed and baby for baby(Line 385 to 410)
 var switchCheckMovement=function(){
     switch(playAreaArray[player.yCoordinate][player.xCoordinate])
                     {
@@ -409,7 +409,7 @@ var switchCheckMovement=function(){
                     }
 }
 
-//Section 21: This function is to check for key press and only activated when game start. Prior/ it will start the music. (Line 393 to 684)
+//Section 22: This function is to check for key press and only activated when game start. Prior/ it will start the music. (Line 413 to 704)
 var checkKey = function(event){
     //console.log(event);
     if(!gameStart){
@@ -704,7 +704,7 @@ var checkKey = function(event){
     }
 
 // Game interaction functions end here
-//Section 22: Display of help screen when the ? is clicked on the bottom left of the help screen(Linke 688 to 698)
+//Section 23: Display of help screen when the ? is clicked on the bottom left of the help screen(Linke 708 to 718)
 var HelpScreen = function(event){
     staminaDepletion = false;
 toggleHelpSwitch = !toggleHelpSwitch;
@@ -717,11 +717,11 @@ if(toggleHelpSwitch){
     }
 }
 
-//Section 23: Checking whether user pressed any keys (Line 701)
+//Section 24: Checking whether user pressed any keys (Line 721)
 document.addEventListener("keyup",checkKey);
 //toggle messages
 
-//Section 24: Toggle of Instruction and Controls on start page (Line 705 to 741)
+//Section 25: Toggle of Instruction and Controls on start page (Line 725 to 761)
 var toggleInstruction = function(event){
 //console.log("toggle");
 //toggleInstructionSwitch=!toggleInstructionSwitch;
@@ -760,7 +760,7 @@ else
 
 }
 
-//Section 25: DOM to create game screen.(Line 744 to 884)
+//Section 26: DOM to create game screen.(Line 764 to 904)
 var gameScreen = function(event){
     startSound.stop();
     dungeonSound.play();
@@ -903,7 +903,7 @@ activateHelpScreen.addEventListener("click",HelpScreen);
     timerIntervalFunction = setInterval(timerCallBack,2000);
 }
 
-//Section 26: DOM to create title screen.(Line 877 to 972)
+//Section 27: DOM to create title screen.(Line 907 to 992)
 var initialScreen = function(){
 
     gameStart = false;
@@ -991,7 +991,7 @@ var initialScreen = function(){
 
 }
 
-//Section 27: Loading function (Line 974 to 990)
+//Section 28: Loading function (Line 994 to 1010)
 window.onload=function()
 {
     //console.log("load up");
