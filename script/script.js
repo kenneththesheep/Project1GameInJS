@@ -447,6 +447,33 @@ var mapMode=function(){
     mapImage.style.backgroundImage=`url(${mapDisplayUrl})`;
 }
 
+var switchCheckMovement=function(){
+    switch(playAreaArray[player.yCoordinate][player.xCoordinate])
+                    {
+                        case "l":
+                        legoStep();
+                        break;
+                        case "t":
+                        tableBump();
+                        break;
+                        case "x":
+                        darkRoom();
+                        break;
+                        case "m":
+                        darkRoom();
+                        break;
+                        case "p":
+                        darkRoom();
+                        break;
+                        case "bed":
+                        seeBed();
+                        break;
+                        case "baby":
+                        seeBaby();
+                        break;
+                    }
+}
+
 //This function is to check for key press and only activated when game start
 var checkKey=function(event){
     //console.log(event);
@@ -463,39 +490,15 @@ var checkKey=function(event){
                 staminaDepletion=true;
                 if(boundaryCheck())
                 {
-    //                console.log("coordinates y:"+player.yCoordinate+",Coordinates x:"+ player.xCoordinate);
-                    switch(playAreaArray[player.yCoordinate][player.xCoordinate])
-                    {
-                        case "l":
-                        legoStep();
-                        break;
-                        case "t":
-                        tableBump();
-                        break;
-                        case "x":
-                        darkRoom();
-                        break;
-                        case "m":
-                        darkRoom();
-                        break;
-                        case "p":
-                        darkRoom();
-                        break;
-                        case "bed":
-                        seeBed();
-                        break;
-                        case "baby":
-                        seeBaby();
-                        break;
-                    }
 
-                    //console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
+                    switchCheckMovement();
+
                 }
                 else
                 {
                     player.yCoordinate++;
                     wallBump();
-                    //console.log("bumped");
+
                 }
 
             }
@@ -503,36 +506,12 @@ var checkKey=function(event){
 
         else if(event.keyCode===40)
             {
-                //down key pressed
+
                 player.yCoordinate++;
                 staminaDepletion=true;
                 if(boundaryCheck()){
-    switch(playAreaArray[player.yCoordinate][player.xCoordinate])
-                    {
-                        case "l":
-                        legoStep();
-                        break;
-                        case "t":
-                        tableBump();
-                        break;
-                        case "x":
-                        darkRoom();
-                        break;
-                        case "m":
-                        darkRoom();
-                        break;
-                        case "p":
-                        darkRoom();
-                        break;
-                        case "bed":
-                        seeBed();
-                        break;
-                        case "baby":
-                        seeBaby();
-                        break;
-                    }
+                    switchCheckMovement();
 
-                    //console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
                 }
                 else
                 {
@@ -546,32 +525,8 @@ var checkKey=function(event){
                 player.xCoordinate++;
                 staminaDepletion=true;
                 if(boundaryCheck()){
-    switch(playAreaArray[player.yCoordinate][player.xCoordinate])
-                    {
-                        case "l":
-                        legoStep();
-                        break;
-                        case "t":
-                        tableBump();
-                        break;
-                        case "x":
-                        darkRoom();
-                        break;
-                        case "m":
-                        darkRoom();
-                        break;
-                        case "p":
-                        darkRoom();
-                        break;
-                        case "bed":
-                        seeBed();
-                        break;
-                        case "baby":
-                        seeBaby();
-                        break;
-                    }
+                    switchCheckMovement();
 
-                    //console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
                 }
                 else
                 {
@@ -586,32 +541,8 @@ var checkKey=function(event){
                         player.xCoordinate--;
                         staminaDepletion=true;
                 if(boundaryCheck()){
-    switch(playAreaArray[player.yCoordinate][player.xCoordinate])
-                    {
-                        case "l":
-                        legoStep();
-                        break;
-                        case "t":
-                        tableBump();
-                        break;
-                        case "x":
-                        darkRoom();
-                        break;
-                        case "m":
-                        darkRoom();
-                        break;
-                        case "p":
-                        darkRoom();
-                        break;
-                        case "bed":
-                        seeBed();
-                        break;
-                        case "baby":
-                        seeBaby();
-                        break;
-                    }
+                    switchCheckMovement();
 
-                    //console.log(playAreaArray[player.yCoordinate][player.xCoordinate]);
                 }
                 else
                 {
@@ -827,30 +758,7 @@ var checkKey=function(event){
                         mapMode();
                     }
             else{
-                        switch(playAreaArray[player.yCoordinate][player.xCoordinate])
-                    {
-                        case "l":
-                        legoStep();
-                        break;
-                        case "t":
-                        tableBump();
-                        break;
-                        case "x":
-                        darkRoom();
-                        break;
-                        case "m":
-                        darkRoom();
-                        break;
-                        case "p":
-                        darkRoom();
-                        break;
-                        case "bed":
-                        seeBed();
-                        break;
-                        case "baby":
-                        seeBaby();
-                        break;
-                    }
+                        switchCheckMovement();
 
 
             }
