@@ -25,6 +25,8 @@ var pickUpSound="SoundEffect/pickup.wav";
 var pickUp;
 var ouchSound="SoundEffect/Ouch.mp3";
 var ouch;
+var mapSound="SoundEffect/map.wav";
+var map;
 //player object
 var player=
 {
@@ -804,6 +806,7 @@ var checkKey=function(event){
                 else if(event.keyCode===77)
         {
         //M Key to map
+        map.play();
             mapStatus= !mapStatus;
             if(mapStatus){
                         console.log("M key pressed");
@@ -1189,6 +1192,7 @@ window.onload=function()
     zombieBaby=new soundEffect(zombieBabySound);
         pickUp=new soundEffect(pickUpSound);
     ouch=new soundEffect(ouchSound);
+    map=new soundEffect(mapSound);
     initialScreen();
 
 
