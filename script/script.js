@@ -207,7 +207,7 @@ var backInitial = function(){
     clearTimeout(restart);
 };
 
-//Section 11 Win state function when you sleep when the baby sleep. (Line 211-222)/
+//Section 11 Win state function when you sleep when the baby sleep. (Line 211-222)
 var winCase = function(){
     win.play();
     console.log("You have won!")

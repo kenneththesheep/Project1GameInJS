@@ -60,6 +60,39 @@ Once done, look for him, feed him, change his diaper and go back to bed.
 <li>Please study the css and js files especially. When you modify the DOM in the js files, make sure do the corresponding action for css file.</li>
 <li>If you have any comments or questions, please contact me. I will be glad to connect with you. Will put my linkedIn here in the future.</li>
 </ul>
+
+---Script chapters for quick referencing---
+<ul>
+	<li>Section 1: Global variables to use to do all the switches (Line 1 to 30)<br></li>
+	<li>Section 2: Define player object which consist of name, coordinates, stamina and picked up items(Line 33 to 41)<br></li>
+	<li>Section 3: Define baby object to check 3 conditions. (Line 44 to 49)<br></li>
+	<li>Section 4: Creation of map area(Line 52 to 85)<br></li>
+	<li>Section 5: Music creation. sound Effect for short burst. Sound for looped music. (Line 88 to 121)<br></li>
+	<li>Section 6: Initialisation all variables. To be called upon winning or losing the game. (Line 124 to 152)<br></li>
+	<li>Section 7: Adjusting stamina length (Line 155 to 169)<br></li>
+	<li>Section 8: Time Interval call back function to deplete the stamina.(Line 174 to 189)<br></li>
+	<li>Section 9: Boundary Check.(Line 192 to 202)<br></li>
+	<li>Section 10: Call back function to end the 10 second timer from every end state and to reload the initial screen. (Line 205-208)<br></li>
+	<li>Section 11 Win state function when you sleep when the baby sleep. (Line 211-222)<br></li>
+	<li>Section 12 Lose state 1 function when you try to feed baby with no milk bottle. (Line 225-236)<br></li>
+	<li>Section 13 Lose state 2 function when you try to change diaper without peg. (Line 239-250)<br></li>
+	<li>Section 14 Lose state 3 function when you try to sleep without completing your tasks. (Line 253-264)<br></li>
+	<li>Section 15 Lose state 4 function when you lost all your stamina. (Line 267-282)<br></li>
+	<li>Section 16 Function to tell user they bump into wall. (Line 286-293)<br></li>
+	<li>Section 17 Function to tell user they step on lego. (Line 296-313)<br></li>
+	<li>Section 18 Function to tell user they bump table. (Line 316-334)<br></li>
+	<li>Section 19 Functions to tell user where they navigated to (Line 337 to 368)<br></li>
+	<li>Section 20: Display of map(Line 372 to 382)<br></li>
+	<li>Section 21: Function to check what the user stepped on. l for lego, t for table, x for neutral ground, m for milk, p for peg, bed for bed and baby for baby(Line 385 to 410)<br></li>
+	<li>Section 22: This function is to check for key press and only activated when game start. Prior/ it will start the music. (Line 413 to 704)<br></li>
+	<li>Section 23: Display of help screen when the ? is clicked on the bottom left of the help screen(Linke 708 to 718)<br></li>
+	<li>Section 24: Checking whether user pressed any keys (Line 721)<br></li>
+	<li>Section 25: Toggle of Instruction and Controls on start page (Line 725 to 761)<br></li>
+	<li>Section 26: DOM to create game screen.(Line 764 to 904)<br></li>
+	<li>Section 27: DOM to create title screen.(Line 907 to 992)<br></li>
+	<li>Section 28: Loading function (Line 994 to 1010)<br></li>
+</ul>
+
 ---Overview Technical Approach---
 <ol>
 <li>I set up three files(html/js/css) to link to each other</li>
