@@ -113,7 +113,10 @@ function sound(src) {
     this.sound.pause();
   }
 }
+//initialisation
+var reinitialisation=function(){
 
+}
 
 
 
