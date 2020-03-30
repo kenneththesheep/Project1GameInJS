@@ -28,6 +28,7 @@ var ouchSound="SoundEffect/Ouch.mp3";
 var ouch;
 var mapSound="SoundEffect/map.wav";
 var map;
+var toggleStatus="hidden";
 //player object
 var player=
 {
@@ -693,25 +694,40 @@ document.addEventListener("keyup",checkKey);
 //
 var toggleInstruction=function(event){
 //console.log("toggle");
-toggleInstructionSwitch=!toggleInstructionSwitch;
+//toggleInstructionSwitch=!toggleInstructionSwitch;
 var toggleInstruction=document.querySelector(".instruction");
-if(toggleInstructionSwitch){
-toggleInstruction.style.visibility="visible";}
-else{
+
+if(toggleStatus==="hidden")
+    {
+        toggleInstruction.style.visibility="visible";
+        toggleInstruction.innerHTML="You are a daddy who is woken up in the middle of the night. <br> You hear your kid crying.<br> You need to move in a dark room and find his milk bottle and a peg (you know how stinky a diapers can get). <br> Once done, look for him, feed him, change his diaper and go back to bed.";
+            toggleStatus="visible";
+    }
+else
+    if(toggleStatus==="visible")
+    {
     toggleInstruction.style.visibility="hidden";
-}
+    toggleStatus="hidden"
+    }
 }
 
 var toggleControl=function(event){
 //console.log("toggle");
-toggleControlSwitch=!toggleControlSwitch;
+var toggleInstruction=document.querySelector(".instruction");
 
-var toggleControl=document.querySelector(".controls");
-if(toggleControlSwitch){
-toggleControl.style.visibility="visible";}
-else{
-    toggleControl.style.visibility="hidden";
-}
+if(toggleStatus==="hidden")
+    {
+        toggleInstruction.style.visibility="visible";
+        toggleInstruction.innerHTML="Arrow keys to move. <br>Space to search.<br> F to feed <br> C to change diapers.<br> S to go back to sleep<br>M to toggle map mode";
+            toggleStatus="visible";
+    }
+else
+    if(toggleStatus==="visible")
+    {
+    toggleInstruction.style.visibility="hidden";
+    toggleStatus="hidden"
+    }
+
 }
 //building of the game screen
 var gameScreen=function(event){
@@ -902,20 +918,16 @@ var initialScreen=function(){
     firstClassContainer.appendChild(firstClassRow);
 
     var firstClassLeftDiv=document.createElement("div");
-    firstClassLeftDiv.classList.add("col-md-5");
+    firstClassLeftDiv.classList.add("col-md-3");
     firstClassRow.appendChild(firstClassLeftDiv);
 
     var firstClassMiddleDiv=document.createElement("div");
-    firstClassMiddleDiv.classList.add("col-md-2");
+    firstClassMiddleDiv.classList.add("col-md-6");
      firstClassMiddleDiv.classList.add("instruction");
     firstClassMiddleDiv.innerHTML="You are a daddy who is woken up in the middle of the night. <br> You hear your kid crying.<br> You need to move in a dark room and find his milk bottle and a peg (you know how stinky a diapers can get). <br> Once done, look for him, feed him, change his diaper and go back to bed.<br><br>";
     firstClassRow.appendChild(firstClassMiddleDiv);
 
-    var firstClassRightDiv=document.createElement("div");
-    firstClassRightDiv.classList.add("col-md-2");
-      firstClassRightDiv.classList.add("controls");
-    firstClassRightDiv.innerHTML="Arrow keys to move. <br>Space to search.<br> F to feed <br> C to change diapers.<br> S to go back to sleep<br>M to toggle map mode";
-    firstClassRow.appendChild(firstClassRightDiv);
+
 
     var secondClassContainer=document.createElement("div");
     secondClassContainer.classList.add("container");
@@ -926,12 +938,12 @@ var initialScreen=function(){
     secondClassContainer.appendChild(secondClassRow);
 
     var secondClassLeftDiv=document.createElement("div");
-    secondClassLeftDiv.classList.add("col-md-5");
+    secondClassLeftDiv.classList.add("col-md-3");
     secondClassRow.appendChild(secondClassLeftDiv);
 
     var secondClassMiddleDiv=
     document.createElement("div");
-    secondClassMiddleDiv.classList.add("col-md-2");
+    secondClassMiddleDiv.classList.add("col-md-3");
     secondClassRow.appendChild(secondClassMiddleDiv);
 
     var instructionButton=document.createElement("button");
@@ -941,7 +953,7 @@ var initialScreen=function(){
 
     var secondClassRightDiv=
     document.createElement("div");
-    secondClassRightDiv.classList.add("col-md-2");
+    secondClassRightDiv.classList.add("col-md-4");
     secondClassRow.appendChild(secondClassRightDiv);
 
     var controlButton=document.createElement("button");
