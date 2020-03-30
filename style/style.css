@@ -97,17 +97,7 @@ margin-top: 35px;
 	height:350px;
 
 }
-.controls{
-		/*background:white;*/
-		background-color:rgba(255, 255, 255, 0.7);
-	border:1px solid black;
-	visibility:hidden;
-	font-size:20px;
-	/*visibility: visible;*/
-	font-family: 'Amatic SC', cursive;
-	text-align: center;
 
-}
 
 .imageBox{
 	width:100%;
