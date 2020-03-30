@@ -3,6 +3,7 @@
 var gameStart=false;
 var toggleInstructionSwitch=false;
 var toggleControlSwitch=false;
+var toggleHelpSwitch=false;
 var restart;
 var timerIntervalFunction;
 var mapStatus=false;
@@ -672,8 +673,20 @@ var checkKey=function(event){
     }
 
 // Game interaction functions end here
+// Help Screen
+var HelpScreen=function(event){
+    staminaDepletion=false;
+toggleHelpSwitch= !toggleHelpSwitch;
+if(toggleHelpSwitch){
+    var helpScreenOn=document.getElementById("gamescreen");
+    helpScreenOn.style.backgroundImage="url('background/controls.png')";
+    }
+    else{
+        switchCheckMovement();
+    }
+}
 
-
+//Check for key
 document.addEventListener("keyup",checkKey);
 //toggle messages
 
@@ -841,7 +854,8 @@ message.setAttribute("id","Message");
 message.innerText="Let's stop the baby from crying. Wonder who turned out the lights";
 thirdContainerMiddleDiv.appendChild(message);
 
-
+var activateHelpScreen=document.getElementById("Help");
+activateHelpScreen.addEventListener("click",HelpScreen);
 
 
     timerIntervalFunction=setInterval(timerCallBack,2000);
