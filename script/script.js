@@ -6,6 +6,10 @@ var toggleControlSwitch=false;
 var restart;
 var timerIntervalFunction;
 var mapStatus=false;
+var backgroundMusic="Music/ElfenLiedLilium.mp3";
+var DungeonMusic="Music/MusicBox.mp3"
+var startSound;
+var dungeonSound;
 //player object
 var player=
 {
@@ -58,6 +62,29 @@ var fixAreaArray=
     ["t","x","x","x","x","baby"]
 ];
 playAreaArray=fixAreaArray;
+//Music Function
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  this.sound.loop=true;
+  document.body.appendChild(this.sound);
+  this.play = function(){
+
+    this.sound.play();
+  }
+  this.stop = function(){
+    this.sound.pause();
+  }
+}
+
+
+
+
+
+
 //timer function
 var testCount=5;
 var timerCallBack=function(){
@@ -114,6 +141,7 @@ player=
     milk:false,
     peg:false
 };
+dungeonSound.stop();
 var winImage=document.getElementById("gamescreen");
 winImage.style.backgroundImage="url('background/happySleepingMan.jpg')";
 var winMessage=document.getElementById("Message");
@@ -146,6 +174,7 @@ player=
     milk:false,
     peg:false
 };
+dungeonSound.stop();
 var loseImage1=document.getElementById("gamescreen");
 loseImage1.style.backgroundImage="url('background/zombieBaby.jpeg')";
 var loseMessage1=document.getElementById("Message");
@@ -176,6 +205,7 @@ player=
     milk:false,
     peg:false
 };
+dungeonSound.stop();
 var loseImage2=document.getElementById("gamescreen");
 loseImage2.style.backgroundImage="url('background/nuclear.jpg')";
 var loseMessage2=document.getElementById("Message");
@@ -205,6 +235,7 @@ player=
     milk:false,
     peg:false
 };
+dungeonSound.stop();
 var loseImage3=document.getElementById("gamescreen");
 loseImage3.style.backgroundImage="url('background/AngryWife.png')";
 var loseMessage3=document.getElementById("Message");
@@ -234,6 +265,7 @@ player=
     milk:false,
     peg:false
 };
+dungeonSound.stop();
 var loseImage4=document.getElementById("gamescreen");
 loseImage4.style.backgroundImage="url('background/noStamina.jpg')";
 var loseMessage4=document.getElementById("Message");
@@ -336,6 +368,10 @@ var mapMode=function(){
 //This function is to check for key press and only activated when game start
 var checkKey=function(event){
     //console.log(event);
+    if(!gameStart){
+        startSound.play();
+        console.log("test");
+    }
     if(gameStart)
     {    //start of movement logic
         if(event.keyCode===38)
@@ -759,6 +795,8 @@ else{
 }
 //building of the game screen
 var gameScreen=function(event){
+    startSound.stop();
+    dungeonSound.play();
     console.log("test");
     gameStart=true;
     document.body.innerHTML="";
@@ -988,14 +1026,59 @@ var initialScreen=function(){
     controlButton.innerText="Controls"
     secondClassRightDiv.appendChild(controlButton);
 
+//creation of audio
+    //startBox
+/*    var iframe=document.createElement("iframe");
+    iframe.setAttribute("src","Music/silence.mp3");
+    iframe.setAttribute("allow","autoplay");
+    iframe.setAttribute("id","audio");
+    startBox.appendChild(iframe);
+
+    var audioStart=document.createElement("audio");
+    audioStart.setAttribute("id", "player");
+    audioStart.loop=true;
+    audioStart.autoplay=true;
+    startBox.appendChild(audioStart);
+
+    var audioSource=document.createElement("source");
+    audioSource.setAttribute("src","Music/ElfenLiedLilium.mp3");
+    audioSource.setAttribute("type","audio/mp3");
+    audioStart.appendChild(audioSource);
+*/
+/*
+    var playBackground=document.getElementById("player");
+
+    var playPromise=playBackground.play();
+     if (playPromise !== undefined) {
+    playPromise.then(_ => {
+      // Automatic playback started!
+      // Show playing UI.
+      playBackground();
+    })
+    .catch(error => {
+      // Auto-play was prevented
+      // Show paused UI.
+    });
+  }
+*/
+
+    //mySound.play();
+
+
     var instructionToggle=document.getElementById("clickInstruction");
     instructionToggle.addEventListener("click",toggleInstruction);
 
     var controlToggle=document.getElementById("clickControl");
     controlToggle.addEventListener("click",toggleControl);
 
+
+
+
+
     var buttonStart=document.getElementById("Start");
     buttonStart.addEventListener("click",gameScreen);
+
+
 
 
 }
@@ -1005,7 +1088,9 @@ var initialScreen=function(){
 
 window.onload=function()
 {
-    console.log("load up");
+    //console.log("load up");
+    startSound = new sound(backgroundMusic);
+    dungeonSound=new sound(DungeonMusic);
     initialScreen();
 
 
