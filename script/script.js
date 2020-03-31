@@ -27,10 +27,14 @@ var ouchSound = "SoundEffect/Ouch.mp3";
 var ouch;
 var mapSound = "SoundEffect/map.wav";
 var map;
-var babyGruntSound="SoundEffect/babyGrunt.mp3";
+var babyGruntSound = "SoundEffect/babyGrunt.mp3";
 var babyGrunt;
-var removeDiaperSound="SoundEffect/removeDiaper.mp3";
+var removeDiaperSound = "SoundEffect/removeDiaper.mp3";
 var removeDiaper;
+var fedMilkSound = "SoundEffect/fedMilk.mp3";
+var fedMilk;
+var babySnoreSound = "SoundEffect/babySnore.mp3"
+var babySnore;
 var toggleStatus = "hidden";
 var m = window.matchMedia("(max-width: 700px)")
 //Section 2: Define player object which consist of name, coordinates, stamina and picked up items(Line 33 to 41)
@@ -593,7 +597,7 @@ var checkKey = function(event){
                 if(player.milk)
                         {
                  console.log("you have fed the kid. Good job");
-
+                 fedMilk.play();
                  baby.fed = true;
             player.milk = false;
                 var milkBottleUsed = document.querySelector(".milkContainer");
@@ -607,6 +611,7 @@ var checkKey = function(event){
                     fedMessage2.innerText = "Sleeping like a baby! Time for me to return";
                     var sleepingBaby = document.getElementById("gamescreen");
                     sleepingBaby.style.backgroundImage = "url('background/sleepingBaby.jpeg')";
+                    //babySnore.play();
                                     }
                     else{
                         var fedMessage3 = document.getElementById("Message");
@@ -664,6 +669,7 @@ var checkKey = function(event){
                     diaperMessage2.innerText = "Sleeping like a baby! Time for me to return";
                     var sleepingBaby = document.getElementById("gamescreen");
                     sleepingBaby.style.backgroundImage = "url('background/sleepingBaby.jpeg')";
+                    //babySnore.play();
                                     }
                                     else{
                                         var diaperMessage3 = document.getElementById("Message");
@@ -1054,5 +1060,7 @@ window.onload=function()
     map = new soundEffect(mapSound);
     babyGrunt= new soundEffect(babyGruntSound);
     removeDiaper= new soundEffect(removeDiaperSound);
+    fedMilk = new soundEffect(fedMilkSound);
+    babySnore = new soundEffect(babySnoreSound);
     initialScreen();
 }
