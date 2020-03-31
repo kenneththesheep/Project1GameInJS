@@ -30,7 +30,7 @@ Once done, look for him, feed him, change his diaper and go back to bed.
 <br>Ensure the baby's diaper is changed and he is fed.
 <br>When you are sure you have done the following
 
----How to loose---
+---How to lose---
 <br>There are a few ways
 <br>You lose all your stamina before completing the task. 💀
 <br>You try to feed the baby without the milk bottle. :male_zombie:
