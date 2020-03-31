@@ -27,6 +27,10 @@ var ouchSound = "SoundEffect/Ouch.mp3";
 var ouch;
 var mapSound = "SoundEffect/map.wav";
 var map;
+var babyGruntSound="SoundEffect/babyGrunt.mp3";
+var babyGrunt;
+var removeDiaperSound="SoundEffect/removeDiaper.mp3";
+var removeDiaper;
 var toggleStatus = "hidden";
 var m = window.matchMedia("(max-width: 700px)")
 //Section 2: Define player object which consist of name, coordinates, stamina and picked up items(Line 33 to 41)
@@ -516,6 +520,7 @@ var checkKey = function(event){
 
             //space key pressed to search
             staminaDepletion = false;
+            switchCheckMovement();
                 switch (playAreaArray[player.yCoordinate][player.xCoordinate])
                 {
                     case "m":
@@ -574,6 +579,7 @@ var checkKey = function(event){
         // F key to feed
         //Logic to feed the kiddo
         staminaDepletion = false;
+        switchCheckMovement();
         if(playAreaArray[player.yCoordinate][player.xCoordinate] === "baby")
             {
                 //console.log("check milk")
@@ -600,11 +606,12 @@ var checkKey = function(event){
                var fedMessage2 = document.getElementById("Message");
                     fedMessage2.innerText = "Sleeping like a baby! Time for me to return";
                     var sleepingBaby = document.getElementById("gamescreen");
-                    sleepingBaby.style.backgroundImage = "url('/background/sleepingBaby.jpeg')";
+                    sleepingBaby.style.backgroundImage = "url('background/sleepingBaby.jpeg')";
                                     }
                     else{
                         var fedMessage3 = document.getElementById("Message");
                     fedMessage3.innerText = "There is something missing in my life";
+                    babyGrunt.play();
 
                                     }
                             }
@@ -630,6 +637,7 @@ var checkKey = function(event){
         //C key to Change diapers
         //Logic to change the diapers
         staminaDepletion = false;
+        switchCheckMovement();
         if(playAreaArray[player.yCoordinate][player.xCoordinate] === "baby")
             {
                 //console.log("check milk")
@@ -645,7 +653,7 @@ var checkKey = function(event){
                                 console.log("you have change the kid's diapers. Good job");
                     var pegUsed=document.querySelector(".pegContainer");
                 pegUsed.style.backgroundImage = "url('')";
-
+                                removeDiaper.play();
                                 baby.diaper = true;
                                 player.peg = false;
                                 if(baby.fed&&baby.diaper)
@@ -660,6 +668,7 @@ var checkKey = function(event){
                                     else{
                                         var diaperMessage3 = document.getElementById("Message");
                     diaperMessage3.innerText = "He is still crying. What did I miss?";
+                    babyGrunt.play()
                                     }
                             }
                         else
@@ -684,6 +693,7 @@ var checkKey = function(event){
         {
         //S Key to sleep
         staminaDepletion = false;
+        switchCheckMovement();
             if(playAreaArray[player.yCoordinate][player.xCoordinate] === "bed")
             {
                 console.log("sleep bed");
@@ -1042,5 +1052,7 @@ window.onload=function()
     pickUp = new soundEffect(pickUpSound);
     ouch = new soundEffect(ouchSound);
     map = new soundEffect(mapSound);
+    babyGrunt= new soundEffect(babyGruntSound);
+    removeDiaper= new soundEffect(removeDiaperSound);
     initialScreen();
 }
