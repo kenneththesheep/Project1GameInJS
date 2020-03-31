@@ -410,6 +410,11 @@ var switchCheckMovement=function(){
 }
 
 //Section 22: This function is to check for key press and only activated when game start. Prior/ it will start the music. (Line 413 to 704)
+var playBackgroudMusic=function(event){
+    if(!gameStart){
+        startSound.play();
+    }
+}
 var checkKey = function(event){
     //console.log(event);
     if(!gameStart){
@@ -719,6 +724,7 @@ if(toggleHelpSwitch){
 
 //Section 24: Checking whether user pressed any keys (Line 721)
 document.addEventListener("keyup",checkKey);
+document.addEventListener("click",playBackgroudMusic);
 //toggle messages
 
 //Section 25: Toggle of Instruction and Controls on start page (Line 725 to 761)
