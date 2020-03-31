@@ -28,7 +28,7 @@ var ouch;
 var mapSound = "SoundEffect/map.wav";
 var map;
 var toggleStatus = "hidden";
-
+var m = window.matchMedia("(max-width: 700px)")
 //Section 2: Define player object which consist of name, coordinates, stamina and picked up items(Line 33 to 41)
 var player =
 {
@@ -152,19 +152,33 @@ dungeonSound.stop();
 }
 
 //Section 7: Adjusting stamina length (Line 155 to 169)
-var staminaDistanceCheck=function(){
+var staminaDistanceCheck=function(m){
     var displayStamina = document.getElementById("staminaCount");
     if(player.stamina === 100)
     {
+
         displayStamina.style.marginLeft = "18px";
     }
     else if(player.stamina > 9 && player.stamina < 100)
     {
-        displayStamina.style.marginLeft = "25px";
+        if(m.matches){
+            console.log("matches");
+            displayStamina.style.marginLeft = "9px";
+        }
+        else{
+                displayStamina.style.marginLeft = "25px";
+            }
     }
     else
     {
-        displayStamina.style.marginLeft = "35px";
+        if(m.matches){
+            console.log("matches");
+            displayStamina.style.marginLeft = "15px";
+        }
+        else
+        {
+            displayStamina.style.marginLeft = "35px";
+        }
     }
 }
 
@@ -177,7 +191,8 @@ var timerCallBack = function(){
 
     var displayStamina = document.getElementById("staminaCount");
     player.stamina -= 1;
-    staminaDistanceCheck();
+    staminaDistanceCheck(m);
+    m.addListener(staminaDistanceCheck);
     if(player.stamina <= 0){
         displayStamina.innerText = `0`;
         noStamina();
@@ -299,7 +314,8 @@ var legoStep = function(){
     if(staminaDepletion)
     {
             player.stamina -= 5;}
-            staminaDistanceCheck();
+            staminaDistanceCheck(m);
+    m.addListener(staminaDistanceCheck);;
     var legoImage = document.getElementById("gamescreen");
     legoImage.style.backgroundImage = "url('background/lego.jpeg')";
     var Message = document.getElementById("Message");
@@ -321,7 +337,8 @@ var tableBump = function(){
     player.stamina -= 10;
     }
       var tableImage = document.getElementById("gamescreen");
-      staminaDistanceCheck();
+      staminaDistanceCheck(m);
+    m.addListener(staminaDistanceCheck);
     tableImage.style.backgroundImage = "url('background/table.jpeg')";
     var Message = document.getElementById("Message");
     Message.innerText = "Wa Lao! Who left the stupid table here!";
@@ -788,7 +805,10 @@ var gameScreen = function(event){
 
     var firstContainerLeftDiv = document.createElement("div");
     firstContainerLeftDiv.classList.add("col-md-2");
+    firstContainerLeftDiv.classList.add("col-s-2");
+    firstContainerLeftDiv.classList.add("col-xs-2");
     firstContainerLeftDiv.classList.add("test");
+    firstContainerLeftDiv.setAttribute("id","leftTopGame");
     firstContainerRow.appendChild(firstContainerLeftDiv);
 
     var circle = document.createElement("div");
@@ -805,12 +825,18 @@ var gameScreen = function(event){
 
     var firstContainerMiddleDiv = document.createElement("div");
     firstContainerMiddleDiv.classList.add("col-md-8");
+    firstContainerMiddleDiv.classList.add("col-s-8");
+    firstContainerMiddleDiv.classList.add("col-xs-8");
     firstContainerMiddleDiv.classList.add("test");
+    firstContainerMiddleDiv.setAttribute("id","middleTopGame");
     firstContainerRow.appendChild(firstContainerMiddleDiv);
 
     var firstContainerRightDiv = document.createElement("div");
     firstContainerRightDiv.classList.add("col-md-2");
+    firstContainerRightDiv.classList.add("col-s-2");
+    firstContainerRightDiv.classList.add("col-xs-2");
     firstContainerRightDiv.classList.add("test");
+    firstContainerRightDiv.setAttribute("id","rightTopGame");
     firstContainerRow.appendChild(firstContainerRightDiv);
 
     var inventoryText = document.createElement("span");
@@ -831,6 +857,7 @@ var gameScreen = function(event){
  secondContainerLeftDiv.classList.add("col-md-2");
  secondContainerLeftDiv.classList.add(
     "test");
+ secondContainerLeftDiv.setAttribute("id","middleLeftGame");
  secondContainerRow.appendChild(secondContainerLeftDiv);
 
 var helpCircle = document.createElement("div");
@@ -848,6 +875,7 @@ helpCircle.appendChild(helpCircleText);
  secondContainerMiddleDiv.classList.add("col-md-8");
  secondContainerMiddleDiv.classList.add(
     "test");
+ secondContainerMiddleDiv.setAttribute("id","middleMiddleGame");
  secondContainerRow.appendChild(secondContainerMiddleDiv);
 
 var gameScreen = document.createElement("div");
@@ -859,11 +887,13 @@ secondContainerMiddleDiv.appendChild(gameScreen);
  secondContainerRightDiv.classList.add("col-md-2");
  secondContainerRightDiv.classList.add(
     "test");
+ secondContainerRightDiv.setAttribute("id","middleRightGame");
  secondContainerRow.appendChild(secondContainerRightDiv);
 
 var secondContainerRightDivFirstRow = document.createElement("div");
 secondContainerRightDivFirstRow.classList.add("row");
 secondContainerRightDivFirstRow.classList.add("test");
+
 secondContainerRightDiv.appendChild(secondContainerRightDivFirstRow);
 
 var milkcontainer = document.createElement("div");
